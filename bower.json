@@ -1,27 +1,17 @@
 {
-  "name": "Wenli Zhang's CV",
-  "version": "1.0.0",
-  "homepage": "http://zhangwenli.com/cv",
+  "name": "chan056.github.io",
+  "homepage": "https://github.com/chan056/chan056.github.io",
   "authors": [
-    "Wenli Zhang"
+    "cy"
   ],
-  "description": "Web Designer and Developer",
-  "keywords": [
-    "CV",
-    "Web Designer",
-    "Web Developer",
-    "Web Front-end"
-  ],
-  "license": "CC BY 3.0",
+  "description": "",
+  "main": "",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ],
-  "dependencies": {
-    "pagepiling.js": "~0.0.7"
-  }
+  ]
 }
-
