@@ -1,0 +1,817 @@
+@charset "UTF-8";
+// CSS Document
+//******************************
+//** 文件描述 :  2周年庆
+//** 时    间 ： 2016.11.29 - 12.13
+//** 作    者 ： wangweimin
+//** E-mail： wangweimin@zjcap.cn
+//*******************************
+@w: 1000px;
+@width: 100%;
+
+//字体
+@yahei: Arial,'Microsoft YaHei';
+@arial: Arial;
+@song: \u5b8b\u4f53,Arial;
+
+@color: #ca0d50; //主色调
+
+@font-face {
+    font-family: 'LeagueGothicRegular';
+    src: url('../font/LeagueGothicRegular.eot');
+    src:
+        url('../font/LeagueGothicRegular.eot?#font-spider') format('embedded-opentype'),
+        url('../font/LeagueGothicRegular.woff') format('woff'),
+        url('../font/LeagueGothicRegular.ttf') format('truetype'),
+        url('../font/LeagueGothicRegular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+//CSS Reset
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd,input,textarea,hr{margin: 0; padding: 0;}
+table{border-collapse: collapse; border-spacing: 0; width: 100%;}
+img{border: none;}
+ul,ol,li{list-style-type: none;}
+a{text-decoration: none; cursor: pointer; color: #333;}
+a:hover{text-decoration: none;}
+input,button,select,textarea{outline: none; background: #fff; border: 1px solid #ccc;}
+a,input{outline: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-tap-highlight-color: transparent;}
+h1,h2,h3,h4,h5,h6{font-size: 100%; font-weight: normal;}
+strong,b{font-weight: normal;}
+em,i{font-style: normal;}
+a,button,input{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.clearfix:before,.clearfix:after {content: "."; display: block;  height: 0; visibility: hidden;}
+.clearfix:after{clear: both;}
+.clearfix{zoom: 1;}
+.clear{clear:both;}
+.hide{display: none;}
+.hidetxt{font-size: 0; line-height: 0; _overflow: hidden;}
+a[title="站长统计"]{
+    display: none;
+}
+.overflow{
+    overflow: hidden;
+}
+
+//单独css
+body{
+    width: 100%;
+    background: #fff;
+    font-family: @yahei;
+}
+
+#phaser_wrap{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: fixed;
+    z-index: 99;
+}
+.shareimg{
+    position: absolute;
+    width: 0; height: 0; line-height: 0; font-size: 0; border: 0; margin: 0; padding: 0;
+}
+
+#wrap{
+    position: relative;
+    width: 750px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+//加载loading
+.load{
+    width: 750px; height: 1334px;
+    margin: 0 auto;
+    background: #F19712 url(../images/loading.gif) no-repeat center center;
+    background-size: cover;
+}
+
+//主页
+.wrap-con{
+    height: 100%;
+    .btn-share{
+        position: fixed; top: 66px; right: 33px; z-index: 20;
+        width: 102px; height: 33px;
+        background: url(../images/share.png) no-repeat;
+        .hidetxt;
+    }
+    .head{
+        position: relative; z-index: 5;
+        width: 750px; height: 823px;
+        background: url(../images/bg.jpg) no-repeat;
+        h1{
+            .hidetxt;
+        }
+        p{
+            .hidetxt;
+        }
+        .time{
+            position: absolute; top: 517px; left: 170px;
+            width: 395px; height: 38px; line-height: 38px;
+            border: 5px solid #ea0b83;
+            border-radius: 10px;
+            color: #e80781;
+            font-family: @yahei;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+    .invite{
+        position: relative; z-index: 6;
+        width: 750px; height: 1045px;
+        margin-top: -165px;
+        padding-top: 115px;
+        background: url(../images/bg2.png) no-repeat;
+        overflow: hidden;
+    }
+    .swiper-container{
+        position: relative; z-index: 1;
+        overflow: hidden;
+    }
+    .swiper-wrapper{
+        position: relative; z-index: 1;
+        width: 100%; height: 950px;
+    }
+    .swiper-slide{
+        position: relative;
+        float: left;
+        width: 100%; height: 100%;
+    }
+    .swiper-pagination{
+        position: absolute; left: 0; bottom: 50px; z-index: 10;
+        width: 100%;
+        text-align: center;
+        .swiper-pagination-bullet{
+            display: inline-block;
+            width: 16px; height: 16px;
+            margin: 0 12px;
+            border-radius: 100%;
+            background: #888;
+        }
+        .swiper-pagination-bullet-active{
+            background: #e40551;
+        }
+    }
+    .invite-info{
+        width: 600px; height: 950px;
+        margin: 0 auto;
+    }
+    .invite-item{
+        .info-top{
+            margin-top: 75px;
+            margin-bottom: 40px;
+            padding-left: 15px;
+            .name{
+                float: left;
+                width: 165px; height: 114px;
+                margin-top: 10px;
+                color: #4835b1;
+                font-family: @yahei;
+                font-size: 24px;
+                font-weight: bold;
+                line-height: 36px;
+                overflow: hidden;
+            }
+            .money{
+                float: left;
+                width: 225px;
+                color: #e5004f;
+                text-align: center;
+                strong{
+                    position: relative;
+                    display: block;
+                    width: 145px;
+                    margin: 0 auto;
+                    font-family: 'LeagueGothicRegular';
+                    letter-spacing: 2px;
+                    font-size: 100px;
+                    line-height: 100px;
+                    &::after{
+                        content: '元';
+                        position: absolute; top: 12px; right: -15px;
+                        font-family: @yahei;
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 16px;
+                    }
+                }
+                b{
+                    display: block;
+                    margin-top: -10px;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+            }
+        }
+        .info-list{
+            padding-left: 15px;
+            .item{
+                float: left;
+                &:first-child{
+                    margin-right: 45px;
+                }
+            }
+            p{
+                width: 254px;
+                border: 1px solid #cdcdcd;
+                border-bottom: none;
+                background: #fff;
+                color: #595757;
+                font-family: @yahei;
+                text-align: center;
+                &:nth-child(1){
+                    height: 50px; line-height: 50px;
+                    font-size: 24px;
+                }
+                &:nth-child(2){
+                    height: 65px; line-height: 65px;
+                    font-size: 36px;
+                    font-weight: bold;
+                }
+                &:nth-child(3){
+                    height: 41px; line-height: 41px;
+                    font-size: 20px;
+                }
+                &:nth-child(4){
+                    padding: 20px 0;
+                    height: 68px;
+                    background: #e5014f;
+                    border-bottom: 1px solid #cdcdcd;
+                    color: #fff;
+                    font-size: 24px;
+                }
+            }
+            b{
+                color: #e5004f;
+                font-family: Arial;
+                font-size: 46px;
+                font-weight: bold;
+                vertical-align: -5px;
+            }
+        }
+        .infos{
+            margin-top: 18px;
+            p{
+                margin-bottom: 10px;
+                color: #3e3a39;
+                font-family: @yahei;
+                font-size: 24px;
+                text-align: center;
+            }
+            .hand{
+                display: block;
+                width: 24px; height: 32px;
+                margin: 20px auto 10px;
+                background: url(../images/hand.png) no-repeat;
+            }
+            .btn-status{
+                display: block;
+                width: 555px; height: 71px; line-height: 67px;
+                margin-left: 20px;
+                background: url(../images/bg_btn.png) no-repeat;
+                color: #fff;
+                font-family: @yahei;
+                font-size: 28px;
+                font-weight: bold;
+                text-align: center;
+                letter-spacing: 6px;
+                &.disabled{
+                    background: url(../images/bg_btn2.png) no-repeat;
+                }
+            }
+            .btn-link{
+                display: block;
+                padding-top: 24px;
+                padding-bottom: 24px;
+                color: #2b43a6;
+                font-family: @yahei;
+                font-size: 24px;
+                text-decoration: underline;
+                text-align: center;
+            }
+        }
+    }
+
+    .award{
+        position: relative; z-index: 5;
+        width: 750px; height: 921px;
+        margin-bottom: 35px;
+        background: url(../images/bg3.png) no-repeat;
+        h2{
+            margin-bottom: 220px;
+        }
+        .btn-buy,.btn-invite{
+            display: block;
+            width: 555px; height: 71px; line-height: 71px;
+            margin: 0 auto;
+            background: url(../images/bg_btn.png) no-repeat;
+            color: #fff;
+            font-family: @yahei;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 6px;
+        }
+        .btn-buy{
+            margin-bottom: 45px;
+        }
+        .info{
+            width: 555px;
+            margin: 0 auto;
+            h3{
+                margin-bottom: 40px;
+                color: #e5004f;
+                font-family: @yahei;
+                font-size: 32px;
+                font-weight: bold;
+                text-align: center;
+            }
+            p{
+                margin-bottom: 50px;
+                color: #4c4948;
+                font-family: @yahei;
+                font-size: 24px;
+                line-height: 40px;
+            }
+        }
+    }
+    .explain{
+        position: relative;
+        padding: 0 55px;
+        color: #fff;
+        font-family: @yahei;
+        h2{
+            margin-bottom: 45px;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .infos{
+            margin-bottom: 50px;
+        }
+        h3{
+            margin-bottom: 10px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        h4{
+            margin-bottom: 10px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        p{
+            margin-bottom: 5px;
+            font-size: 24px;
+            text-align: justify;
+            // &:last-child{
+            //     margin-top: 50px;
+            //     margin-bottom: 50px;
+            // }
+        }
+        .mt50{
+            margin-top: 50px;
+        }
+    }
+}
+
+//注册页面
+.register-con{
+    .btn-share{
+        position: fixed; top: 66px; right: 33px; z-index: 20;
+        width: 102px; height: 33px;
+        background: url(../images/share.png) no-repeat;
+        .hidetxt;
+    }
+    .head{
+        width: 750px; height: 503px;
+        background: url(../images/reg/bg.jpg) no-repeat center top;
+        .title{
+            width: 453px; height: 317px;
+            margin: 0 auto;
+        }
+        h1{
+            .hidetxt;
+        }
+        p{
+            .hidetxt;
+        }
+    }
+}
+//注册模块，可复用
+.register-wrap{
+    position: relative; z-index: 3;
+    width: 750px; height: 275px;
+    margin-top: -82px;
+    padding-top: 570px;
+    background: url(../images/reg/bg_reg.png) no-repeat;
+    .register-form{
+        position: absolute; top: 60px; left: 50px; z-index: 4;
+        width: 680px; height: 475px;
+    }
+    .btn-login{
+        position: relative; z-index: 4;
+        display: inline-block;
+        padding-top: 50px;
+        padding-bottom: 75px;
+        padding: 50px 0 75px 25px;
+        color: @color;
+        font-family: @yahei;
+        font-size: 30px;
+    }
+    .label{
+        height: 70px;
+        margin-bottom: 25px;
+        margin-left: 25px;
+        strong{
+            float: left;
+            width: 93px; height: 69px; line-height: 69px;
+            background: @color;
+            border: 2px solid #898989;
+            border-right: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        input{
+            float: left;
+            height: 69px;
+            padding-left: 30px;
+            background: #fff;
+            border: 2px solid #898989;
+            border-left: none;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            color: #000;
+            font-family: @yahei;
+            font-size: 30px;
+            &.error{
+                border: 2px solid #fa1515;
+            }
+            &.disabled,&[disabled]{
+                border: 2px solid #9fa0a0;
+                color: #848484;
+                cursor: default;
+            }
+        }
+        .input-mobile{
+            width: 456px;
+        }
+        .input-imgcode{
+            width: 304px;
+        }
+        .input-phonecode{
+            width: 241px;
+        }
+        .input-referrer{
+            width: 547px;
+            border-left: 2px solid #898989;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .imgcode{
+            float: left;
+            width: 204px; height: 70px;
+            margin-left: 22px;
+            cursor: pointer;
+            &.disabled,&[disabled] {
+                background: #9fa0a0;
+                cursor: default;
+            }
+        }
+        .btn-phonecode{
+            float: left;
+            width: 204px; height: 71px; line-height: 71px;
+            margin-left: 10px;
+            background: @color;
+            border-radius: 5px;
+            color: #fff;
+            font-family: @yahei;
+            font-size: 30px;
+            text-align: center;
+            cursor: pointer;
+            &.disabled,&[disabled] {
+                background: #9fa0a0;
+                cursor: default;
+            }
+        }
+    }
+    .label-mobile{
+        strong{
+            background: @color url(../images/reg/icon_mobile.png) no-repeat center center;
+            &.disabled,&[disabled]{
+                background: #9fa0a0 url(../images/reg/icon_mobile.png) no-repeat center center;
+            }
+        }
+    }
+    .label-imgcode{
+        strong{
+            background: @color url(../images/reg/icon_imgcode.png) no-repeat center center;
+            &.disabled,&[disabled]{
+                background: #9fa0a0 url(../images/reg/icon_imgcode.png) no-repeat center center;
+            }
+        }
+    }
+    .label-phonecode{
+        strong{
+            background: @color url(../images/reg/icon_phonecode.png) no-repeat center center;
+            &.disabled,&[disabled]{
+                background: #9fa0a0 url(../images/reg/icon_phonecode.png) no-repeat center center;
+            }
+        }
+    }
+    .btn-register{
+        display: block;
+        width: 575px; height: 78px; line-height: 78px;
+        margin-left: 80px;
+        background: @color;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        &.disabled{
+            color: #bfb2b2;
+            cursor: default;
+        }
+    }
+}
+.tips{
+    position: absolute; top: 50%; left: 50%; z-index: 99;
+    width: 600px;
+    margin-left: -300px;
+    margin-top: -50px;
+    padding: 25px 0;
+    background: rgba(0,0,0,.8);
+    border-radius: 15px;
+    color: #fff;
+    font-family: @yahei;
+    font-size: 36px;
+    text-align: center;
+}
+
+.mask,.mask2{
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: rgba(19,2,6,.85);
+    font-family: @yahei;
+
+    //分享
+    .mask-share{
+        position: absolute; top: 415px; left: 165px;
+        width: 398px; height: 409px;
+        background: url(../images/bg_share.png) no-repeat;
+        .share-info{
+            position: relative;
+            width: 315px; height: 205px;
+            margin-top: 105px;
+            margin-left: 10px;
+        }
+        p{
+            padding-left: 45px;
+            color: #000;
+            font-size: 30px;
+            line-height: 46px;
+            &:last-child{
+                margin-top: 20px;
+            }
+        }
+    }
+
+    //弹出框
+    .alert-con,.mask-verification{
+        position: relative;
+        width: 630px;
+        margin: 50% auto;
+        background: #fff;
+        border: 1px solid #999;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 0 256px rgba(255, 255, 255, .3);
+        .con{
+            padding: 70px 50px;
+            color: #666;
+            font-size: 30px;
+        }
+        .btns{
+            height: 100px;
+            border-top: 2px solid #c9c6c5;
+            .btn-cancel,.btn-confirm{
+                display: block;
+                height: 99px; line-height: 99px;
+                color: #dd5152;
+                font-size: 34px;
+                text-align: center;
+            }
+        }
+    }
+    .alert-con{
+        z-index: 10;
+    }
+
+    //图形 验证码框
+    .mask-verification{
+        position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+        width: 630px; height: 566px;
+        //margin: 40% auto;
+        margin-top: 283px;
+        background: #f7f7f7;
+        .verification-con{
+            position: relative;
+            height: 465px;
+            h3{
+                padding: 50px 0 75px 0;
+                color: #333;
+                font-family: @yahei;
+                font-size: 36px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .imgcode{
+                display: block;
+                width: 380px; height: 134px;
+                margin: 0 auto 33px;
+            }
+            .input-imgcode{
+                display: block;
+                width: 473px; height: 80px;
+                margin: 0 auto;
+                padding-left: 25px;
+                background: #fff;
+                border: 2px solid #cecece;
+                font-family: @yahei;
+                font-size: 26px;
+                &.error{
+                    border: 2px solid #fa1515;
+                }
+                &.disabled,&[disabled]{
+                    border: 2px solid #9fa0a0;
+                    cursor: default;
+                }
+            }
+            .tip{
+                position: absolute; top: 120px; left: 0;
+                width: 625px;
+                color: #dd5152;
+                font-family: @yahei;
+                font-size: 24px;
+                text-align: center;
+            }
+            /* span{
+                position: absolute; top: 120px; right: 85px;
+                font-size: 24px;
+            } */
+        }
+        .btns{
+            .btn-cancel{
+                border-right: 2px solid #c9c6c5;
+                color: #485f72;
+            }
+            .btn-cancel,.btn-confirm{
+                float: left;
+                width: 50%;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+.mask2{
+    //邀请好友
+    .mask-invite{
+        position: absolute; top: 420px; left: 126px;
+        width: 500px; height: 250px;
+        background: #ef3938 url(../images/bg_share.png) no-repeat;
+        border-radius: 25px;
+        .invite-info{
+            position: relative;
+            width: 476px; height: 118px; line-height: 135px;
+            margin: -45px auto 0;
+            background: #fff;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            color: #b20000;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            .btn-close{
+                position: absolute; top: 16px; right: 16px;
+                width: 50px; height: 50px;
+                background: url(../images/close.png) no-repeat top right;
+            }
+        }
+        p{
+            padding: 45px 35px 20px 50px;
+            background: #ef3938;
+            color: #fff;
+            font-size: 24px;
+            line-height: 45px;
+        }
+    }
+
+    //获奖用户名单
+    .mask-prize{
+        position: absolute; top: 210px; left: 68px;
+        width: 623px; height: 839px;
+        background: url(../images/bg_prize.png) no-repeat;
+        color: #fff;
+        font-family: @yahei;
+        h3{
+            margin-top: 140px;
+            margin-bottom: 100px;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .title{
+            position: relative; z-index: 5;
+            width: 398px; height: 41px;
+            margin: 40px auto 25px;
+            background: #c90e50;
+            color: #fff;
+            font-family: @yahei;
+            font-size: 26px;
+            text-align: center;
+            strong{
+                position: relative; z-index: 5;
+                display: block;
+                width: 398px; height: 41px;
+                background: #c90e50;
+            }
+            &::before{
+                content: '';
+                position: absolute; top: 8px; left: -43px; z-index: 3;
+                width: 70px; height: 41px;
+                background: url(../images/corner.png) no-repeat;
+            }
+            &::after{
+                content: '';
+                position: absolute; top: 8px; right: -43px; z-index: 3;
+                width: 70px; height: 41px;
+                background: url(../images/corner.png) no-repeat;
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        }
+        ul{
+            width: 398px; height: 125px;
+            margin: 0 auto;
+            overflow-y: auto;
+            li{
+                height: 35px; line-height: 35px;
+                margin-bottom: 10px;
+            }
+            span{
+
+                width: 195px; height: 35px;
+                color: #595757;
+                font-size: 24px;
+                overflow: hidden;
+            }
+            .left{
+                float: left;
+            }
+            .right{
+                float: right;
+                text-align: right;
+            }
+        }
+        .btn-prize-close{
+            position: absolute; top: 0; right: 0;
+            width: 105px; height: 75px;
+        }
+    }
+}
+
+// iPhone 5
+@media screen and (max-height: 1200px) {
+    .mask2{
+        .mask-share{
+            top: 315px;
+        }
+        .mask-prize{
+            top: 110px;
+        }
+    }
+}
+
+// iPhone 4
+@media screen and (max-height: 975px) {
+    .mask{
+        .mask-verification{
+            margin: 30% auto;
+        }
+    }
+    .mask2{
+        .mask-share{
+            top: 255px;
+        }
+        .mask-prize{
+            top: 70px;
+        }
+    }
+}

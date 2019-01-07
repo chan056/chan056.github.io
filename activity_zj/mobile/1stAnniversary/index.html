@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转盘抽奖</title>
+    <script type="text/javascript">
+        var r = /Android (\d+\.\d+)/;
+        var m = navigator.userAgent.match(r);
+        if(m){
+            //console.log(m)
+            //var version = parseFloat(RegExp.$1);
+            if(m[1] > 2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            //console.log(navigator.userAgent)
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" href="/resources/plugins/artDialog/ui-dialog.css?v=1">
+    <link rel="stylesheet" href="css/index.css?_qq=112311">
+    <link href="/wechat/css/popup.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+<body>
+    <div id="abcd" style=""></div>
+    <div id="wrap">
+        <div class="banner">
+            <img class="prize" src="img/prize.png">
+            <img class="anniversary_text" src="img/anniversary_text.png">
+            <div class="active_date">火爆收益16%好礼抽不停！</div>
+            <span class="activity_time">活动时间：12月1日 — 12月31日</span>
+        </div>
+        <div id="turntable">
+            <span id="run"></span>
+            <button id="btn_run" class="abs" autocomplete="off">注册<br>抽奖</button>
+            <ul id="star">
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+            </ul>
+        </div>
+        <div id="chance">登录查看抽奖机会</div>
+        <div id="broadcast" class="1abs">
+            <div>
+                <em class="icon"></em>
+                <label for="">抽奖实时播报</label>
+                <marquee direction="left" id="winners_list"></marquee>
+            </div>
+        </div>
+    </div>
+
+    <a class="active-rule">使用奖品</a>
+    <a class="active-rule2">活动规则</a>
+
+    <div class="pop-box" id="rule">
+        <div class="pop-close"></div>
+        <div class="pop-lace">活动规则</div>
+        <div class="pop-main">
+            <div class="rule">
+                <div>
+            <table>
+                <tr>
+                    <td><em>01</em></td>
+                    <td>活动时间：2015年12月1日-2015年12月31日；</td>
+                </tr>
+                <tr>
+                    <td><em>02</em></td>
+                    <td>活动期间，新用户注册拥有一次转盘抽奖机会；用户完成账户首次投资可再拥有一次转盘抽奖机会。若投资满足相应额度，即可额外获得一次开宝箱机会，宝箱开启次数不设上限；用户所得实物奖品、抵用券等可在“我的奖励”中查询，所得现金奖励将在用户完成过首投后发放至用户“我的账户”内 ，可直接提现。</td>
+                </tr>
+                <tr>
+                    <td><em>03</em></td>
+                    <td>用户在活动期间投资“新手专享”，可享受7%+4%（额外加息）；</td>
+                </tr>
+                <tr>
+                    <td><em>04</em></td>
+                    <td>每位用户在投资日所指定预测日期的13:00前，可投资该期股指加息产品，并预测当期上海证券交易所公布的上证综合指数（代码000001）收盘价的涨跌，预测正确的用户当日所投股指加息产品在原有收益基础上加息4%，预测错误则按产品原有收益计算，不另加息；<br/>
+                    注：投资当期如遇到国定节假日、特殊情况导致所预测当期股市休市等，股指加息产品按基础收益7%计算，不另加息。
+                    </td>
+                </tr>
+                <tr>
+                    <td><em>05</em></td>
+                    <td>活动期间用户，投资金额达到要求即可开启相应宝箱，宝箱开启后累计投资金额将扣除已抽奖的投资金额重新计算；<br>
+                        1）投资满10,000元（包含）— 79,999元，可打开银宝箱；<br>
+                        内含奖品：绿色小米500g、绿色大米500g、啤酒（定制包装袋1*6 ）、10元现金、水果代金券、5元抵用券；<br>
+                        2）投资满80,000元（包含）— 149,999元，可打开金宝箱；<br>
+                        内含奖品：金条10g、人参礼盒、啤酒（定制包装袋1*24 ）、50元话费、10元抵用券；<br>
+                        3）投资满150,000元（包含）以上，可打开白金宝箱；<br>
+                        内含奖品：iPhone6s（16g）、iPad、獐子岛海参、100元油卡、20元抵用券；
+                </tr>
+                <tr>
+                    <td><em>06</em></td>
+                    <td>请于2015年12月31日前完善收货信息，活动结束后奖品将在工作人员与获奖者核实信息后的15个工作日内寄出。若因收货信息有误，且15天内无法取得联系的，则视为用户放弃获奖资格。</td>
+                </tr>
+                <tr>
+                    <td><em>07</em></td>
+                    <td>本活动与Apple公司、上海证券交易所等不存在任何合作关系；<br/>本活动最终解释权归中均资本所有</td>
+                </tr>
+            </table>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden ">
+
+    </div>
+    <div class="prize-box" id="prize">
+        <a class="pr-close"></a>
+        <div class="pr-content"></div>
+        <div class="pr-btn">领取奖品</div>
+    </div>
+    <div class="pop-box" id="register">
+        <div class="pop-close"></div>
+        <div class="pop-main">
+            <div class="pop-logo"></div>
+            <form class="pop-form">
+                <div class="pop-form-group"><input  class="input1" type="tel" placeholder="请输入手机号"/></div>
+                <div class="pop-form-group" id="vcode"><input class="input2" type="tel"  placeholder="请输入验证码"/><span class="code-btn">获得验证码</span></div>
+                <div class="pop-form-group" id="uword"><input class="input2" type="password"  placeholder="请输入账号密码"/></div>
+                <div id="error"></div>
+            </form>
+            <div class="pop-btn">提交领奖</div>
+        </div>
+    </div>
+    <div class="pop-box" id="reg_tip">
+        <div class="pop-close"></div>
+        <div class="pop-main">
+            <div class="pop-txt-h1">注册成功</div>
+            <div class="pop-txt-h2">请点击转盘抽奖</div>
+        </div>
+    </div>
+    <div class="pop-box" id="lottery_tip">
+        <div class="pop-close"></div>
+        <div class="pop-main">
+                <div class="pop-txt-h1">大转盘仅限新注册用户专享</div>
+                <div class="pop-txt-h3">资深用户可投资<span>“中均股指加息产品”</span><br/>送<span>最高4.11%</span>额外年化收益</div>
+                <div class="pop-txt-h3 clor">（参加投资开宝箱  100%赢取礼品）</div>
+                <div class="pop-btn">马上去选购</div>
+        </div>
+    </div>
+    <div class="pop-box hidden" id="lottery_none">
+        <div class="pop-close"></div>
+        <div class="pop-main">
+                <div class="pop-txt-h1 pop-txt-h6">您目前有<span>0</span>次抽奖机会</div>
+                <div class="pop-btn">OK</div>
+        </div>
+    </div>
+    <div class="pop-box" id="error_tip">
+        <div class="pop-bg"></div>
+        <div class="pop-close"></div>
+        <div class="pop-main">
+                <div class="pop-txt-h1 pop-txt-h6"></div>
+                <div class="pop-btn">OK</div>
+        </div>
+    </div>
+    <div class="pop-box" id="weixinSuc">
+        <div class="pop-close"></div>
+        <div class="pop-main" id="newresult">
+                <div class="pop-img-h1"></div>
+                <div class="pop-txt-h7"></div>
+                <div class="pop-txt-h3">关注中均资本公众号即可提现</div>
+                <div class="pop-txt-h2" style="color: #dd2831;">更有16%收益爆款产品，转盘转不停~</div>
+                <div class="pop-btn">去领取</div>
+        </div>
+        <div class="pop-main" id="oldresult">
+            <div class="pop-img-h1"></div>
+            <div class="pop-txt-h7">抱歉，注册抽奖只针对新用户，<br/>老用户可前往官网参与~<br/>iPhone6s等更多好礼等你来！</div>
+        </div>
+    </div>
+    <div class="pop-box" id="thank_tip">
+        <div class="pop-bg"></div>
+        <div class="pop-close"></div>
+        <div class="pop-main">
+                <div class="pop-txt-h5">谢谢参与!</div>
+                <div class="pop-txt-h9">非常遗憾  您没有中奖</div>
+                <div class="pop-txt-h7">活动期间投资满10000元</div>
+                <div class="pop-txt-h8">开启宝箱100%有礼</div>
+                <div class="pop-btn">OK</div>
+        </div>
+    </div>
+    <script src="../../jquery.2.1.4.min.js"></script>
+    <script type="text/javascript" src="/resources/plugins/jquery/jquery.md5.js?v=1"></script>
+    <script src="/resources/js/Rotate.js"></script>
+    <script src="/resources/plugins/artDialog/dialog-min.js?v=1"></script>
+    <script src="/wechat/js/apporh5.js"></script>
+    <script src="https://www.zjcap.cn/tongji/trace/up_beacon.js"></script>
+    <script>
+    var wechatcode ,
+        wechatuserInfo = '',
+        isAPP = false; //APP版、手机版开关，默认手机版
+    var _Act = {
+        isWeixin: !1,
+        auth: function(data, success) {
+            this.getData("/web/auth", data, success);
+        },
+        noauth: function(data, success) {
+            this.getData("/web/noauth", data, success);
+        },
+        getData: function(url, data, success) {
+             $.ajax({
+                url: url,
+                dataType:"json",
+                cache:false,
+                data:data,
+                success: function(result){
+                //   $("#abcd").html($("#abcd").html()+ '<br/>' +url+':'+JSON.stringify(data) + ":" +JSON.stringify(result));
+                    success(result);
+                },
+                error:function(result){
+                }
+            });
+        }
+    };
+    function phoneStr(val) {
+        return val.substr(0,3) + "****" + val.substr(7);
+    }
+    /**
+     * 中奖消息
+     **/
+     _Act.noauth({method: '/activity/getShowClientCoupon', activityCode: '10000006'}, function(result) {
+        var _datas = result.data || [],
+          //    fragment = document.createDocumentFragment();
+             strHtml = "";
+        for (var i = 0; i <  _datas.length; i++) {
+            var _data = _datas[i],
+                  _type = _data.code.substr(7)*1 > 2 ? '开宝箱' : '大转盘';
+            strHtml +="恭喜" + phoneStr(_data.mobilePhone) + _type +"获得["+_data.name+"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        };
+        $("#winners_list").html(strHtml);
+     })
+    /**
+     *  用户抽奖和用户宝箱
+     **/
+    _Act.lucky= (function() {
+        //  用户抽奖
+        var lottery_act = !1, // 转盘是否执行中
+            lottery_code = ['10000001', '10000002', '10000006', '10000007', '10000008'],
+            // 抽奖中奖标识
+            prize_code = {
+                '00000001': [0, '获得：<span>50</span>元现金'],
+                '00000002': [45, '获得：<span>10</span>元现金'],
+                '00000003': [90, '获得：<span>3</span>元现金'],
+                '00000004': [135, '获得：<span>2</span>元现金'],
+                '00000008': [225, ''],
+                '00000007': [270, '获得：<span>5</span>元抵用券'],
+                '00000006': [180, '获得：<span>50</span>元抵用券'],
+                '00000005': [325, '获得：<span>50</span>元话费']
+            }
+        var $lottxt = $('#chance');
+        var $count = $('#count');
+        // 转盘抽奖
+        var lottery = function() {
+            if(!_lucky.lotteryDate) {
+                _lucky.register();
+                lottery_act = !1;
+                return;
+            }
+            if(_lucky.lotteryDate.num == 0) {
+                if(_Act.isWeixin && (_lucky.lottoryCode ||  _lucky.lotteryDate.code)) {
+                    _lucky.prize(_lucky.lottoryCode || {code: _lucky.lotteryDate.code});
+                }else if(!_lucky.lotteryDate.status) {
+                    _lucky.lotteryNone();
+                }else{
+                    _lucky.other();
+                }
+                lottery_act = !1;
+                return;
+            }
+            var code = _lucky.lotteryDate[lottery_code[0]]*1 > 0 ? lottery_code[0] : lottery_code[1];
+            var _data = {
+                method:'/client/activity/drawlottery',
+                activityCode:code
+            };
+            if(_Act.isAuth == 'noauth') {
+                _data.method = '/activity/drawlotteryforwechat';
+                _data.openid = wechatuserInfo && wechatuserInfo.openid;
+            }
+            _Act[_Act.isAuth](_data, function(result) {
+                if(result.retCode == '0000') {
+                    if(!result.data.winning) {
+                        result.data.code = '00000008';
+                    }
+                    $("#run").rotate({
+                        duration:5000, //转动时间
+                        angle: 0, //默认角度
+                        animateTo:360*10+prize_code[result.data.code][0], //转动角度
+                        easing: $.easing.easeOutSine,
+                        callback: function(){
+                            _lucky.lottoryCode = result.data;
+                            lottery_act = !1;
+                            if(!result.data.winning)_lucky.thankin();
+                            else _lucky.prize(result.data);
+                            _lucky.install();
+                        }});
+                }
+                else if(result.retCode == '4005') {_lucky.register();lottery_act = !1;}
+                else {_lucky.error(result);lottery_act = !1;}
+            })
+        };
+
+        function Lucky() {
+            that = this;
+            $("#btn_run").click(function(){
+                if(lottery_act) return;
+                lottery_act = !0;
+                lottery();
+            });
+             //活动规则
+            $('.active-rule2').on('click', that.rule);
+        }
+
+        Lucky.prototype = {
+            install: function(callback) {
+                var that = this;
+                function  getlotteryData(url, key) {
+                    var _data = {method: url};
+                    if(key == 'noauth') {
+                        _data.openid = wechatuserInfo && wechatuserInfo.openid;
+                        _data.activityCode = lottery_code[0];
+                    }
+                     _Act[key](_data, function(data) {
+                        if(data.retCode == '0000') {
+                            if(key == 'noauth') {
+                                data.data = {
+                                    '10000001': data.data.chances,
+                                    '10000002': 0,
+                                    'code': data.data.code,
+                                    status: 0
+                                };
+                                if(!!data.data.code) that.lottoryCode = {code: data.data.code};
+                            }
+                            that.lotteryDate = data.data;
+                            that.setLotteryNum();
+                        }else if(data.retCode == '4005') {
+                            $lottxt.html('登录查看抽奖机会');
+                        }
+                        callback && callback(data.data);
+                    });
+                }
+                 _Act.getData('/web/loginInfo', '', function(result) {
+                    var _url = _Act.isWeixin ? '/activity/getlotterychanceforwechat' :  '/client/activity/getLotteryDrawChance';
+                    _Act.isAuth = _Act.isWeixin ? 'noauth' :  'auth';
+                    if(result.isLogin) {
+                       _url = '/client/activity/getLotteryDrawChance';
+                       _Act.isAuth = 'auth';
+                    }
+                    getlotteryData(_url, _Act.isAuth);
+                });
+            },
+            //  设置
+            setLotteryNum: function() {
+                var _num = this.lotteryDate[lottery_code[0]]*1 + this.lotteryDate[lottery_code[1]]*1;
+                this.lotteryDate.num = _num;
+                $lottxt.html('您还有<span>'+ _num +'</span>次抽奖机会');
+            },
+            // 获取验证码
+            getVcode: function(obj, mobile) {
+                var t = 60;
+
+                if (obj.hasClass('code-disabled')) {
+                    return;
+                }
+                GetVcode(obj, mobile, 1, function(result){
+         //       _Act.getData('/api/validate/code/send', {mobilePhone: mobile,messageType: 1}, function(result) {
+                    if(result.retCode == '0000') {
+                        obj.addClass('code-disabled');
+                        obj.html('获取验证码('+ t +')');
+                        var timer = setInterval(function() {
+                            t--;
+                            if (t <= 0) {
+                                obj.removeClass('code-disabled').html('重新获取验证码');
+                                return clearInterval(timer);
+                            }
+                            obj.html('获取验证码('+ t +')');
+                        }, 1000);
+                        _lucky.isReg = !0;
+                    }else{
+                        $("#error").html('手机已被注册,请输入密码').show();
+                        $("#vcode").hide();
+                        $("#uword").show();
+                        _lucky.isReg = !1;
+                    }
+                })
+            },
+            // 用户注册
+            register: function() {
+                if(isAPP) {
+                    loginAPPorH5();
+                    return;
+                }
+                var that = this;
+                var $register = $('#register');
+                var _dialog = dialog({
+                    content: $register[0],
+                    fixed: true
+                }).showModal();
+                $register.find('.pop-close').click(function(){_dialog.close();});
+                $register.find('.input1').keyup(function(argument) {
+                   if(/^0?1[34578][0-9]{9}$/.test($(this).val())) {
+                        $(this).attr('disabled', 'true');
+                        that.getVcode($register.find('.code-btn'), $(this).val());
+                    }
+                })
+                var btnAct = !1;
+                $("#vcode").find('.code-btn').click(function() {
+                    var error = '',
+                          phone = $register.find('.input1').val();
+                     if($.trim(phone) == '') {
+                        error = '请输入手机号';
+                    }
+                    if(!/^0?1[34578][0-9]{9}$/.test(phone)) {
+                        error = '请输入正确的11位手机号';
+                    }
+                    if(error != '') {
+                        $("#error").html(error).show();
+                        return;
+                    }
+                    that.getVcode($(this), phone);
+                });
+                $register.find('.pop-btn').click(function() {
+                    if(btnAct) return;
+                    btnAct = !0;
+                    var phone = $register.find('.input1').val(),
+                          vcode = $("#vcode").find('.input2').val(),
+                          uword = $("#uword").find('.input2').val(),
+                          error = '';
+
+                    if($.trim(phone) == '') {
+                        error = '请输入手机号';
+                    }else if(!/^0?1[34578][0-9]{9}$/.test(phone)) {
+                        error = '请输入11正确的手机号';
+                    }else if(!that.isReg) {
+                        if($.trim(uword) == '') {
+                            error = '请输入用户密码';
+                        }
+                    }else {
+                        if($.trim(vcode) == '') {
+                            error = '请输入获取的验证码';
+                        }else if(!/^\d{6}$/.test(vcode)) {
+                            error = '短信验证码必须为6位数字';
+                        }
+                    }
+
+                    if(error != '') {
+                        $("#error").html(error).show();
+                        btnAct = !1;
+                        return;
+                    }
+
+                    var _callback = function(data) {
+                        if(data.retCode == '0000') {
+                            //快速登录统计
+                            var $require = $("<img/>");
+                            $require.css("display","none").attr("src","https://www.zjcap.cn/tongji/trace/a.gif?logUrl="+encodeURIComponent("personalRegisterSuccess.html?uuid="+data.result.data.uuid)+"&logHisRefer=");
+                            $("body").append($require);
+                            _dialog.close();
+                            that.regSuccess();
+                        }else {
+                           $("#error").html(data.retMsg).show();
+                        }
+                        btnAct = !1;
+                    }
+
+                    if(!that.isReg) {
+                        var _data = {
+                            userName: phone,
+                            password: uword
+                        };
+                        _Act.getData('/web/quicklogin', _data, _callback);
+
+                    }else{
+                        var _data = {
+                            smsVerifyCode: vcode,
+                            mobilePhone: phone,
+                            wechatOpenid: wechatuserInfo && wechatuserInfo.openid,
+                            lottoryCode: that.lottoryCode && that.lottoryCode.code
+                        };
+                        _Act.getData('/web/registerandlogin', _data, _callback);
+                    }
+                });
+                function _show() {
+                    _dialog.showModal();
+                }
+                this.register = _show;
+            },
+            //注册成功窗口
+            success: function() {
+                var $reg_tip = $('#reg_tip');
+                var _dialog = dialog({
+                    content: $reg_tip [0],
+                    fixed: true
+                }).showModal();
+                $reg_tip.find('.pop-close').click(function(){ _dialog.close();});
+                function _show() {
+                    _dialog.showModal();
+                }
+                this.install();
+                this.success = _show;
+            },
+            // 中奖结果
+            prize: function(data) {
+                var $prize = $('#prize');
+                var _dialog = dialog({
+                    content: $prize[0],
+                    fixed: true,
+
+                });
+                $prize.find('.pr-close').click(function(){_dialog.close(); });
+                $prize.find('.pr-btn').click(function(){
+                    if(_Act.isWeixin) {
+                        _Act.getData('/web/loginInfo', '', function(result) {
+                            if(result.isLogin) {
+                                self.location.href = '/wechat/award.html';
+                            }else{
+                                _dialog.close();
+                                _lucky.register();
+                            }
+                        });
+                        return;
+                    }
+                    else if(isAPP){
+                        loginAPPorH5(4);
+                    }
+                    else self.location.href = '/wechat/award.html';
+                });
+                function setContent(d) {
+                    _dialog.showModal()
+                    var _html = prize_code[d.code] ? prize_code[d.code][1] : d.name;
+                    $prize.find('.pr-content').html(_html);
+                }
+                setContent(data);
+                this.prize = setContent;
+            },
+
+            //无抽奖机会提示
+            lotteryNone: function() {
+                var $none = $('#lottery_none');
+                var _dialog = dialog({
+                    content: $none[0],
+                    fixed: true
+                }).showModal();
+                $none.find('.pop-close').click(function(){ _dialog.close();});
+                $none.find('.pop-btn').click(function(){ _dialog.close();});
+                function _show() {
+                    _dialog.showModal();
+                }
+                this.lotteryNone = _show;
+            },
+
+            // 其他提示
+            other: function() {
+                var $other = $('#lottery_tip');
+                var _dialog = dialog({
+                    content: $other[0],
+                    fixed: true
+                }).showModal();
+                $other.find('.pop-close').click(function(){ _dialog.close();});
+                $other.find('.pop-btn').click(function(){ self.location.href = '/wechat/product.html'; });
+                function _show() {
+                    _dialog.showModal();
+                }
+                this.other = _show;
+            },
+            //活动规则
+            rule: function() {
+                var $rule = $('#rule');
+                var _dialog = dialog({
+                    content: $rule[0],
+                    fixed: true
+                }).showModal();
+                $rule.find('.pop-close').click(function(){ _dialog.close();});
+                function _show() {
+                    _dialog.showModal();
+                }
+                this.rule = _show;
+            },
+            // 判断注册框成功或跳转的界面
+            regSuccess: function(argument) {
+                if(_Act.isWeixin) this.weixinSuccess();
+                else if(!this.isReg) this.install();
+                else this.success();
+            },
+            weixinSuccess: function(argument) {
+               var $weixinSuc = $('#weixinSuc');
+               var _dialog = dialog({
+                    content: $weixinSuc[0],
+                    fixed: true
+                });
+                $weixinSuc.find('.pop-close, .pop-btn').click(function(){ _dialog.close();});
+                $weixinSuc.find('.pop-btn').click(function(){ self.location.href= "http://mp.weixin.qq.com/s?__biz=MzAxOTAxMTM1NA==&mid=400463038&idx=1&sn=fafa3ee0a5875573c0f2cd0c678b14bc&scene=1&srcid=1111GghtsxQ0yvzAsPES7rYC&from=singlemessage&isappinstalled=0#wechat_redirect"});
+                function _show() {
+                    that.install(function(data) {
+                        if(!data.status) {
+                        var _html = prize_code[_lucky.lottoryCode.code] ? prize_code[_lucky.lottoryCode.code][1] : _lucky.lottoryCode.name;
+                            _html += '已经发放至您账户';
+                            _html = _html.replace("：", "的");
+                            $('#newresult .pop-txt-h7').html(_html);
+                            $('#newresult').show();
+                            $('#oldresult').hide();
+                        }else{
+                            $('#newresult').hide();
+                            $('#oldresult').show();
+                        }
+
+                        _dialog.showModal();
+                   });
+                }
+                _show();
+                this.weixinSuccess = _show;
+            },
+            // 错误提示
+            error: function(data) {
+                var $error = $('#error_tip');
+                var _dialog = dialog({
+                    content: $error[0],
+                    fixed: true
+                }).showModal();
+                $error.find('.pop-close, .pop-btn').click(function(){ _dialog.close();});
+                function _show(data) {
+                     $error.find('.pop-txt-h1').html(data.retMsg);
+                    _dialog.showModal();
+                }
+                _show(data);
+                this.error = _show;
+            },
+            thankin:function() {
+                var $thank = $('#thank_tip');
+                var _dialog = dialog({
+                    content: $thank[0],
+                    fixed: true,
+                    padding: 0
+                }).showModal();
+                $thank.find('.pop-close, .pop-btn').click(function() {
+                    _dialog.close();
+                });
+
+                function _show() {
+                    _dialog.showModal();
+                }
+                this.error = _show;
+            }
+        };
+        var _lucky = new Lucky();
+        return _lucky;
+    })();
+
+    //wechat operation
+
+
+    var getQueryString = function(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) return xssEscape(escape(decodeURI(r[2].replace(/\\/g,"%"))));//unescape的获取url参数乱码，改成decodeURI后可以
+	    return null;
+	}
+
+    var xssEscape = function (content) {
+        return typeof content === 'string'
+        ? content.replace(/&(?![\w#]+;)|[<>"']/g, function (s) {
+            return {
+                "<": "&#60;",
+                ">": "&#62;",
+                '"': "&#34;",
+                "'": "&#39;",
+                "&": "&#38;"
+            }[s];
+        })
+        : content;
+    }
+
+    window.onload = function(){
+    	wechatcode = getQueryString('code');
+    	if(wechatcode){
+    	   _Act.noauth({
+    	        code : wechatcode,
+                method: '/wechat/userinfo/getsnsapi'
+    	    },function(res){
+    	        if(res.retCode == 0000){
+    	        	if(res.data.openid){
+    	        	  var data = res.data;
+    	        	  wechatuserInfo = data;
+                      _Act.isWeixin = !0;
+    	        	}
+    	        }
+                _Act.lucky.install();
+    	    });
+            _Act.noauth({
+                method:'/wechat/userinfo/getweixinjsinfo',
+                url : location.href
+            },function(res){
+                if(res.retCode == 0000){
+                    if(res.data.appid){
+                        initWeiXinConfig(res.data);
+                    }
+                }
+            });
+    	}
+
+        (function() {
+            var domain = window.location.protocol + '//' + window.location.hostname;
+            var search = window.location.search;
+            var url = window.location.href;
+            var facility;  //设备标识
+            var accessToken;
+            var isLogin = false;
+            var WKWebView; //true IOS8+ false IOS7
+
+            //解析URL
+            function analysisUrl(search) {
+               //是否是android
+                if (search.indexOf('zjcap_app_android') != -1) {
+                    facility = 'android';
+                    isAPP = true;
+                }
+
+                //是否是ios
+                if (search.indexOf('zjcap_app_iphone') != -1 || search.indexOf('ios_h5_zjcap') != -1) {
+                    facility = 'iphone';
+                    isAPP = true;
+                    WKWebView = getQueryString('WKWebView');
+                }
+                if (search.indexOf('accessToken') != -1) {
+                    var at = search.match(/^\?(?:[\w&=]*)(accessToken=([0-9a-zA-Z]+))/);
+                    accessToken = at && at[2];
+                }
+                if(accessToken && isAPP) {
+                    loginLogin(accessToken, function() {
+                        _Act.lucky.install();
+                    });
+                }else if(isAPP){
+                    _Act.getData('/web/quickloginout', '', function() {
+                        _Act.lucky.install();
+                    });
+                }else{
+                    _Act.lucky.install();
+                }
+            }
+            analysisUrl(search);
+            function loginLogin(token, callback) {
+                $.ajax({
+                    url: domain +'/web/loginforwebapp',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        accessToken: token
+                    },
+                    success: function(response) {
+                        callback();
+                    }
+                })
+            }
+            //APP回调H5
+            /*  type 交互事件，1请求登录 2购买产品
+            parameter = {
+                url: url, //当前url
+                callback: funName, JS后续处理的函数名，APP原样返回
+                data: data
+            }
+            */
+            APPCallH5 = function(type, parameter) {
+                if (typeof parameter == 'string') {
+                    parameter = JSON.parse(parameter);
+                }
+
+                if (type == 1) {
+                    loginLogin(parameter.accessToken, function() {
+                        _Act.lucky.install();
+                    });
+                }
+            }
+
+            //H5调APP
+            //type类型和parameter，parameter必须包含url
+            //H5CallAPP(type, parameter);
+
+            //登录
+            loginAPPorH5 = function(num) {
+                num = num || 1;
+                if (isAPP) {
+                    //调APP方法，事件类型1
+                    var parameter = {};
+                    parameter.url = url;
+                    parameter.data = null;
+
+                    if (facility == 'iphone') {
+                        if (window.WKWebView == '1') {
+                            // ios8+
+                            window.webkit.messageHandlers.H5CallAPP.postMessage(JSON.stringify({'type': num, 'parameter': parameter}));
+                        } else {
+                            // ios7
+                            native.H5CallAPP(num, JSON.stringify(parameter));
+                        }
+                    } else if (facility == 'android') {
+                        AppTool.H5CallAPP(num, JSON.stringify(parameter));
+                    }
+                } else {
+                    //调微信登录页
+                    window.location.href = domain + '/wechat/login.html';
+                }
+            }
+        })();
+    }
+
+    function initWeiXinConfig(data){
+		wx.config({
+		    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		    appId: data.appid, // 必填，公众号的唯一标识
+		    timestamp:data.timestamp , // 必填，生成签名的时间戳
+		    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+		    signature: data.signature,// 必填，签名，见附录1
+		    jsApiList: [
+				'checkJsApi',
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage',
+				'onMenuShareQQ',
+				'onMenuShareWeibo',
+				'onMenuShareQZone',
+				'hideMenuItems',
+				'showMenuItems',
+				'hideAllNonBaseMenuItem',
+				'showAllNonBaseMenuItem',
+				'translateVoice',
+				'startRecord',
+				'stopRecord',
+				'onVoiceRecordEnd',
+				'playVoice',
+				'onVoicePlayEnd',
+				'pauseVoice',
+				'stopVoice',
+				'uploadVoice',
+				'downloadVoice',
+				'chooseImage',
+				'previewImage',
+				'uploadImage',
+				'downloadImage',
+				'getNetworkType',
+				'openLocation',
+				'getLocation',
+				'hideOptionMenu',
+				'showOptionMenu',
+				'closeWindow',
+				'scanQRCode',
+				'chooseWXPay',
+				'openProductSpecificView',
+				'addCard',
+				'chooseCard',
+				'openCard'
+		      ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		});
+		wx.ready(function () {
+			 var title = '';
+			 var desc = '抽奖页面';//{TODO 获取本页面标题}
+			 var link = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1b715b6e1962a36d&redirect_uri=http%3a%2f%2f120.55.118.6%2fzjzc-weixin-server%2fpages%2factivityPage%2fmidautumn%2findex.html?generatedKey=123457813332468c84fc8c2642e2627&response_type=code&scope=snsapi_base&state=0#wechat_redirect';
+			 var imgUrl = 'http://???.jpg';//{TODO 添加图片地址}
+			 wx.onMenuShareTimeline({
+				title:title, // 分享标题
+				desc:desc,
+				link:link, // 分享链接
+				imgUrl:imgUrl, // 分享图标
+				trigger: function (res) {
+			    },
+			    success: function () {
+			        // 用户确认分享后执行的回调函数
+			         addShareRecord();
+			    },
+			    cancel: function () {
+			        // 用户取消分享后执行的回调函数
+			    },
+			    fail: function (res) {
+			    }
+			});
+			wx.onMenuShareAppMessage({
+			 	title:title, // 分享标题
+				desc:desc,
+				link:link, // 分享链接
+				imgUrl:imgUrl, // 分享图标
+			    type: 'link', // 分享类型,music、video或link，不填默认为link
+			    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			    success: function () {
+			    	addShareRecord();
+			    },
+			    cancel: function () {
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+
+		});
+
+		wx.error(function(res){
+		   // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+		});
+	}
+
+    function addShareRecord(){
+
+    }
+    function GetVcode(btnSelector, mobile, messageType, cb) {
+            console && console.log(arguments)
+            var btn = $(btnSelector);
+            if (btn.hasClass('code-disabled')) {
+                return;
+            }
+       //      getData: function(url, data, success) {
+            _Act.getData('/api/validate/code/sendinfo', {
+                mobilePhone: mobile
+            }, callbackA)
+
+            /**
+             * 获取短信验证机制
+             * @return {undefined}
+             */
+            function callbackA() {
+                var d = arguments[0].data;
+                if (!d)
+                    return;
+                var stringToken = d.stringToken, // 1
+                    tokenType = d.tokenType; // 0,没有验证,1.字符令牌验证发送,2.图形码验证方式
+
+                var data = {
+                    mobilePhone: mobile,
+                    messageType: messageType
+                };
+
+                //tokenType = 2;
+                if (tokenType == 1) {
+                    data.stringToken = stringToken;
+                    sendSMS();
+                } else if (tokenType == 2) { //图形验证码
+                    var validForm = $("#validCodeForm");
+                    if (!validForm.length) {
+                        var h = '<form class="valid_code_form hidden" id="validCodeForm" style="display: none; background-color:#fff;"><div class="form_group"><input class="form_control valid_code" name="validCode" type="text" autocomplete="off"><img class="valid_img" title="点击更换"></div><p class="tips">请填写图片中的字符，不区分大小写</p><input class="mobile_number" type="hidden"></form>';
+                        validForm = $(h).appendTo('body');
+                    }
+                    //console.log(validForm)
+                    // 图形验证码
+                    validForm.find(".valid_img").click(function() {
+                        $(this).attr("src", "/api/validate/generatevalidcode?mobilePhone=" + mobile + '&_=' + Math.random());
+                    });
+
+                    //图形验证码 容器
+                    dialog({
+                        id: "valid_img_dia",
+                        fixed: true,
+                        content: validForm,
+                        padding: '20px',
+                        okValue: "确定",
+                        ok: function() {
+                            data.imageToken = $.trim($(this.node).find(".valid_code").val());
+                            sendSMS();
+                            return false;
+                        },
+                        onshow: function() {
+                            //console.log(this._$('content'))
+                            validForm.find(".valid_img").trigger("click");
+                            validForm.find(".valid_code").focus().val('');
+                        }
+                    }).showModal();
+
+                } else {
+                    sendSMS();
+                }
+
+                /**
+                 * 发送短信验证码
+                 * @return {undefined}
+                 */
+
+                function sendSMS() {
+                    _Act.getData("/api/validate/code/send", data, callbackB);
+
+                    function callbackB(result) {
+                        switch (result.retCode) {
+                            case "0000":
+                                countDown();cb(result);
+                                showTip('验证码已发送，请注意查收！', 2)
+                                break;
+                            case "9001":
+                                showTip('图片验证码错误，请重新输入！', 2)
+                                break;
+                            case "6006":
+                                cb(result);
+                                showTip('该手机号已被注册！', 2, !0)
+                                break;
+                            default:
+                                showTip('服务器正忙，请刷新页面重试...', 2)
+                                break;
+                        }
+                    }
+
+                    /**
+                     * 关闭图形验证码弹出框 显示提示框并定时关闭
+                     * @param  {String} content 提示内容
+                     * @param  {Number} timeout 倒计时
+                     * @return {undefined}
+                     */
+                    function showTip(content, timeout, is){
+
+                        var graphVcodeWrapper = dialog.get("valid_img_dia"); //图形验证码弹出框
+                        graphVcodeWrapper && graphVcodeWrapper.close();
+
+                        if(!is) {
+                            var tipDialog = dialog({
+                                id: "valid_tips",
+                                fixed: true,
+                                onshow: function() {}
+                            });
+                            tipDialog.content('<div class="cy-dialog">'+content+'</div>').showModal();
+                            if(timeout){
+                                setTimeout(function() {
+                                    tipDialog.close();
+                                }, timeout * 1000);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /**
+             * 倒计时
+             * @param  {Number} t 秒
+             * @return {undefined}
+             */
+
+            function countDown(t) {
+                t = t || 60;
+                btn.addClass('code-disabled');
+
+                rewrite(btn, t)
+                var timer = setInterval(function() {
+                    t--;
+                    if (t <= 0) {
+                        rewrite(btn, t)
+                        btn.removeClass('code-disabled');
+                        return clearInterval(timer);
+                    }
+                    rewrite(btn, t)
+                }, 1000);
+
+                function rewrite(o, t) {
+                    var text = t > 0 ? '重新发送' + t + '' : '重新获取';
+                    o.is('input, button') ? o.val(text) : o.html(text);;
+                }
+            }
+        }
+
+        //使用礼品
+        $('.active-rule').click(function() {
+            if(isAPP) {
+                if (isIOS) {
+                    CallH5ToAPP(5, '', '/wechat/index.html');
+                } else {
+                    $(this).attr('href', '/wechat/index.html');
+                }
+            } else {
+                $(this).attr('href', '/wechat/index-new.html');
+            }
+        })
+    </script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body>
+</html>
+

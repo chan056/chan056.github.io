@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>情人节活动 - 中均资本</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" href="css/index.css" class="linkcss">
+</head>
+<body>
+    <div id="wrap">
+        <img src="images/share.jpg" alt="中均资本" class="shareimg">
+        <section class="page page3">
+            <div class="bg"></div>
+            <div class="heart-wrap">
+                <div class="angel"></div>
+                <div class="heart-result"><span class="result js-result"></span></div>
+            </div>
+                <div class="matching-result js-matching-result">
+                    <p class="tip">2016年你们的缘分如何？</p>
+                    <span class="yao"></span>
+                    <p class="yao-tip">摇一摇 查看缘分指数</p>
+                </div>
+            <!-- /if-->
+            <span class="embellish"></span>
+        </section>
+        <div class="petal">
+            <img src="images/hua1.png" class="pe-an1"/>
+            <img src="images/hua2.png" class="pe-an2"/>
+            <img src="images/hua3.png" class="pe-an3"/>
+            <img src="images/hua4.png" class="pe-an4"/>
+            <img src="images/hua5.png" class="pe-an5"/>
+            <img src="images/hua2.png" class="pe-an6"/>
+        </div>
+    </div>
+    <script src="../../jquery.2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/shake.js"></script>
+    <script type="text/javascript" src="js/datas.js"></script>
+    <script>
+        /*主功能*/
+        var main = {
+            page4: function() {
+
+                $(".js-result").html(main.data.a);
+                var myShakeEvent = new Shake({
+                    threshold: 15
+                });
+                myShakeEvent.start();
+                window.addEventListener('shake', function() {
+                    self.location.href = 'index.html';
+                }, false);
+            }
+        };
+        var cookieHelper = function(name, value, options) {
+            if (typeof value != 'undefined') {
+                options = options || {};
+                if (value === null) {
+                    value = '';
+                    options.expires = -1;
+                }
+                var expires = '';
+                if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+                    var date;
+                    if (typeof options.expires == 'number') {
+                        date = new Date();
+                        date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+                    } else {
+                        date = options.expires;
+                    }
+                    expires = '; expires=' + date.toUTCString();
+                }
+                var path = options.path ? '; path=' + options.path : '',
+                    domain = options.domain ? '; domain=' + options.domain : '',
+                    secure = options.secure ? '; secure' : '';
+                document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+            } else {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        }
+        var key = cookieHelper('key'), man = cookieHelper('man'), woman = cookieHelper('woman');
+        if(key){
+            main.key = key, main.data = datas[key],main.manval = man,main.womanval = woman;
+            main.page4();
+        }else{
+            self.location.href = 'index.html';
+        }
+    </script>
+
+    <!--<script src="js/job.js?_v=${last.updated}" class="linkscript"></script>
+    <script src="https://www.zjcap.cn/tongji/trace/up_beacon.js?_v=${last.updated}"></script>-->
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" id="viewport" content="width=750,user-scalable=no,target-densitydpi=320">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>预知你的2016，快看看你的新年运势吧！</title>
+        <link rel="stylesheet" href="css/style.css">
+
+        <!--<script src="//hm.baidu.com/hm.js?86d6a529d1e3fe5fc8981ff391855878"></script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?86d6a529d1e3fe5fc8981ff391855878";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>-->
+    </head>
+<body>
+<img src="img/2/16.jpg" alt="" style="position: fixed; left:0; transform: translate(-100%); -webkit-transform:translate(-100%);">
+<div class="wrapper">
+    <div class="box">
+        <img data-id="1_1" alt="" class="text-img">
+        <img data-id="1_2" alt="" class="text-img">
+        <img data-id="1_3" alt="" class="text-img">
+
+        <div id="dollar"></div>
+
+        <span id="progress">0%</span>
+        <img data-id="1_5" alt="">
+    </div>
+    <div class="box">
+        <img data-id="1_11" alt="">
+
+        <img data-id="1_13" alt="">
+        <!--财神-->
+        <img data-id="1_14" alt="" class="mammon">
+        <img data-id="1_12" alt="">
+        <input type="text" id="name" class="input" placeholder="请输入您的姓名">
+        <input type="button" class="button" id="starer" value="开始求签">
+
+
+        <!-- 签筒 -->
+        <div id="barrel">
+            <img class="delayed stick" data-id="2_10" alt="">
+            <img class="delayed stick" data-id="2_11" alt="">
+            <img class="delayed stick" data-id="2_10" alt="">
+            <img class="delayed stick" data-id="2_11" alt="">
+            <img class="delayed stick" data-id="2_10" alt="">
+            <img class="delayed stick" data-id="2_11" alt="">
+
+            <img class="delayed barrelBg" data-id="2_0" alt="" id="bgBg">
+            <img class="delayed barrelBg" data-id="2_1" alt="">
+
+        </div>
+        <img class="delayed" data-id="2_12" alt="">
+
+        <!--解签-->
+        <p class="solve">
+            2016年你的福运如何？
+            <br>
+            <input type="button" class="button" value="摇一摇 财神解签">
+        </p>
+        <!--财神+文字-->
+        <div class="solve mammon">
+            <img class="delayed" data-id="2_2" alt="">
+            <span class="yunshi">一<br>马<br>当<br>先</span>
+        </div>
+        <img data-id="1_5" alt="">
+    </div>
+    <div class="box">
+        <img class="delayed" data-id="2_5" alt="">
+        <h1>
+            <em>阿甘</em>
+            <span>的“2016年运势”</span>
+        </h1>
+        <h2>
+            <span class="fl yunshi">一马当先</span>
+            <img class="delayed fr" data-id="2_4" alt="">
+            <span class="fr">上上签</span>
+        </h2>
+        <img class="delayed" data-id="2_13" alt="">
+        <p class="detail">天开地辟。结良缘是天地开创之象。为大吉大利之象也。日吉时良。万事俱全顺遂之命。能蒙神指示为此签之人。非小可也。劝君必行中正帝王亦宣言曰。如能行之正直。积善。修身时。必能持之恒久。如宋太祖。赵匡胤之黄袍加身。急速非速言来时值观音降事报与君之者。</p>
+        <img class="delayed" data-id="2_13" alt="">
+
+        <p class="ma over button-wrapper">
+            <input type="button" class="button fl" value="我要再抽签">
+            <input type="button" class="button fr" value="好准去分享">
+        </p>
+
+        <div id="qrcode-wrapper">
+            <img class="delayed" data-id="2_3" alt="">
+            <img id="qrcode" class="delayed" data-id="2_14" alt="">
+        </div>
+
+        <p id="qrcode-tip">长按二维码进入微信号回复数字“1”就有机会免费抽取30元手机话费一份</p>
+        <div id="share-tip">
+            <img class="delayed" data-id="2_15" alt="">
+        </div>
+
+        <img data-id="1_5" alt="">
+    </div>
+</div>
+<script src="../jquery.2.1.4.min.js"></script>
+<script src="../../resources/plugins/jquery/jquery.md5.js"></script>
+<script src="js/shake.js"></script>
+<script src="js/main.js"></script>
+<!--<script>
+var shareObject = {
+    title: '预知你的2016，快看看你的新年运势吧！',
+    desc: '天了噜，准到没朋友！',
+    link: 'http://yhdhd.evenhidata.com/chouqian/static/html/index.php',
+    imgUrl: 'http://yhdhd.evenhidata.com/chouqian/share.jpg'
+};
+
+wx.config({
+    debug: false,
+    appId: 'wx96b3e9e1ae7d16e3',
+    timestamp: 1453865350,
+    nonceStr: 'bSDqIwhAIKUsHfjJ',
+    signature: '46b044b826bbc1aa372f1cfa68e161d0b38ffb34',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+});
+
+wx.ready(function (){
+    wx.onMenuShareTimeline({
+        title: shareObject.title,
+        desc:  shareObject.desc,
+        link: shareObject.link,
+        imgUrl: shareObject.imgUrl,
+        success: function () {
+            //alert(shareObject.link);
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    wx.onMenuShareAppMessage({
+        title: shareObject.title,
+        desc:  shareObject.desc,
+        link: shareObject.link,
+        imgUrl: shareObject.imgUrl,
+        type: 'link',
+        success: function () {
+            //alert(shareObject.link);
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+});
+</script>-->
+<script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body></html>

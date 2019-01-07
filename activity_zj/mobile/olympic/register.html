@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>您的好友邀您参加奥运大竞猜！</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="Keywords" content="中均,中均资本,中均资产,巴西,里约,奥运会,中国,金牌,奖牌">
+    <meta name="Description" content="中均资产管理有限公司是由大型国企龙翔投资控股集团 有限公司与长春城市开发（集团）有限公司联合发起 成立，致力于为高净值客户提供财富长期稳健的保值、 增值服务的资产管理公司。">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" href="css/olympic.css">
+</head>
+<body>
+    <div id="wrap">
+        <img src="images/share.jpg" alt="中均资本" class="shareimg">
+
+        <div class="register-con">
+            <div class="head">
+                <h1>奥运大竞猜</h1>
+                <p>邀好友送50000元体验金</p>
+            </div>
+            <div class="news">
+                <p>您的好友邀请您来中均，奥运好礼享不停！</p>
+            </div>
+
+            <div class="register-wrap">
+                <a class="btn-login">已有中均账号，请点击&gt;</a>
+                <div class="label label-mobile">
+                    <strong></strong>
+                    <input type="tel" class="input-mobile" maxlength="11" placeholder="请输入手机号">
+                </div>
+                <div class="label label-phonecode">
+                    <strong></strong>
+                    <input type="tel" class="input-phonecode" maxlength="6" placeholder="手机验证码">
+                    <a class="btn-phonecode disabled" data-isimg="1">获取验证码</a>
+                </div>
+                <div class="label label-referrer">
+                    <input type="tel" class="input-referrer" maxlength="11" placeholder="推荐人手机号">
+                </div>
+                <a class="btn-register disabled">点击参加奥运大竞猜</a>
+            </div>
+        </div>
+
+        <div class="tips hide"></div>
+
+        <div class="mask hide">
+            <div class="alert-con hide">
+                <div class="con">系统错误</div>
+                <div class="btns">
+                    <a class="btn-confirm">确定</a>
+                </div>
+            </div>
+            <div class="mask-verification hide">
+                <div class="verification-con">
+                    <div class="label clearfix">
+                        <input type="text" class="input-imgcode" maxlength="4" placeholder="图形验证码">
+                        <img class="imgcode" src="images/imgcode.jpg" alt="图形验证码">
+                        <span>点击图片刷新</span>
+                    </div>
+                </div>
+                <div class="btns">
+                    <a class="btn-cancel">取消</a>
+                    <a class="btn-confirm">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../jquery.2.1.4.min.js"></script>
+    <script src="../../apporh5.js"></script>
+    <script src="js/olympic.js"></script>
+    <script src="https://www.zjcap.cn/tongji/trace/up_beacon.js"></script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591" language="JavaScript"></script>
+</body>
+</html>

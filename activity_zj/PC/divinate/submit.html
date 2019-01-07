@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" id="viewport" content="width=750,user-scalable=no,target-densitydpi=320">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title></title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="wrapper" id="submit">
+            <img src="img/2/7.png" alt="" class="logo">
+            <input class="input" type="text" placeholder="请输入您的名字">
+            <input class="input" type="text" placeholder="请输入您的手机号">
+            <input class="input" type="text" placeholder="请输入您的微信号">
+            <img class="bond" src="img/3/1.png" alt="">
+            <input type="button" value="提交" class="button">
+            <p class="tip">活动结束由后台随机抽奖</p>
+            <img data-id="1_5" src="img/1/5.png" alt="">
+
+            <div class="fixed">
+                <div>
+                    <img src="img/3/2.png" alt="">
+                    <p>我知道了</p>
+                </div>
+            </div>
+        </div>
+    <script src="../jquery.2.1.4.min.js"></script>
+    <script>
+        $('.button').on('click', function(){
+            var inputs = $('.input');
+            var info = {
+                personName: $.trim(inputs.eq(0).val()),
+                mobilePhone: $.trim(inputs.eq(1).val()),
+                userNick: $.trim(inputs.eq(2).val())
+            }
+
+            $.get('/web/noauth', {
+                method: '/wechat/clientinfo/add',
+                personName: info.personName,
+                mobilePhone: info.mobilePhone,
+                userNick: info.userNick,
+                fromType: 1
+            },function(d){
+                d = $.parseJSON(d);
+                var retCode = d.retCode;
+                if(retCode == '0000'){
+                    fixed.show();
+                }else{//console.log(d)
+                    var msg = d.retMsg;
+                    alert(msg)
+                }
+            })
+        });
+
+        var fixed = $('.fixed');
+
+        fixed.find('p').on('click', function(){
+            fixed.hide();
+        })
+    </script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+    </body>
+</html>
