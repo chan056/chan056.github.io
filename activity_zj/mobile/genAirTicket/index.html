@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机票生产器 - 中均资本</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" href="index.css" class="linkcss">
+</head>
+<body>
+
+    <div class="box-h130">
+        <div class="icon icon-title box-center page page-m1"></div>
+    </div>
+    <div class="box-center box-w710 relative">
+        <canvas width="710" height="410" id="canvas" class="page"></canvas><img src="" id="img">
+        <img src="images/3_04.png" class="img-tip page page-m3">
+    </div>
+    <div class="page page-m1">
+        <div class="box-w636 box-center"><div class="fr icon icon-tip"></div></div>
+        <div class="box-h160 clear"></div>
+        <div class="box-center icon icon-box1">
+            <input class="box-center put-txt fsize30" placeholder="请输入你的姓名" id="txt"/>
+        </div>
+        <div class="box-h50"></div>
+        <div class="box-center icon icon-btn" id="btn"></div>
+    </div>
+    <img src="images/3_03.png" class="box-center icon-qrcode page page-m2"/>
+<script src="../../jquery.2.1.4.min.js"></script>
+<script src="/resources/plugins/pingyin.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body>
+</html>

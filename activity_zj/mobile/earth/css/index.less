@@ -1,0 +1,667 @@
+@charset "utf-8";
+// CSS Document
+//******************************
+//** 文件描述 :  地球熄灯1小时活动 中均资本
+//** 时    间 ： 2016.03.16 - 03.19
+//** 作    者 ： wangweimin
+//** E-mail： wangweimin@zjcap.cn
+//*******************************
+@w: 1000px;
+@width: 100%;
+
+//字体
+@yahei: Arial,'Microsoft YaHei';
+@arial: Arial;
+@song: \u5b8b\u4f53,Arial;
+
+@img: '../images/';
+
+//CSS Reset
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd,input,textarea,hr{margin: 0; padding: 0;}
+table{border-collapse: collapse; border-spacing: 0; width: 100%;}
+img{border: none;}
+ul,ol,li{list-style-type: none;}
+a{text-decoration: none; cursor: pointer; color: #333;}
+a:hover{text-decoration: underline;}
+input,button,select,textarea{outline: none; background: #fff; border: 1px solid #ccc;}
+a,input{outline: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-tap-highlight-color: transparent;}
+h1,h2,h3,h4,h5,h6{font-size: 100%; font-weight: normal;}
+strong,b{font-weight: normal;}
+em,i{font-style: normal;}
+a,button,input{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+.clearfix:before,.clearfix:after {content: "."; display: block;  height: 0; visibility: hidden;}
+.clearfix:after{clear: both;}
+.clearfix{zoom: 1;}
+.clear{clear:both;}
+.hide{display: none;}
+.hidetxt{font-size: 0; line-height: 0; _overflow: hidden;}
+
+//单独css
+body{
+    width: 100%;
+    background: #030826;
+    overflow: hidden;
+    font-family: @yahei;
+}
+
+.shareimg{
+    position: absolute;
+    width: 0; height: 0; line-height: 0; font-size: 0; border: 0; margin: 0; padding: 0;
+}
+
+.bg{
+    position: fixed; top: 0; left: 0; z-index: 99;
+    background: rgba(0,0,0,.8);
+}
+
+#wrap{
+    position: relative;
+    width: 750px;
+    height: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.loads{
+    background: url("@{img}loaging.gif") no-repeat;
+}
+
+// 加载页
+.load{
+    width: 750px;
+    background: #0a144c;
+    overflow: hidden;
+    img{
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.wrap-earth{
+    position: relative; top: 0; left: 0;
+    width: 750px;
+    background: url("@{img}b1.png") no-repeat;
+    background-size: cover;
+    font-family: @yahei;
+    .page{
+        position: relative; top: 0; left: 0;
+        width: 750px;
+    }
+
+    .lefthand,.righthand,.tophand{
+        width: 63px; height: 54px;
+        background: url("@{img}z3.png") no-repeat;
+    }
+    .way{
+        position: absolute; top: 1020px; left: 314px; z-index: 10;
+        color: #fff;
+        font-size: 30px;
+    }
+    .money{
+        position: absolute; top: 1101px; left: 104px;
+        width: 548px; height: 70px;  line-height: 70px;
+        background: url("@{img}z4.png") no-repeat;
+        color: #fffaf0;
+        font-size: 30px;
+        text-align: center;
+        b{
+
+        }
+        em{
+            display: inline-block;
+            margin: 0 5px;
+            vertical-align: 2px;
+        }
+    }
+}
+
+// main
+.page{
+    p,div,a,i{
+        position: absolute;
+    }
+    .title{
+        top: 30px; left: 102px;
+        width: 564px; height: 111px;
+        background: url("@{img}t1.png") no-repeat;
+    }
+    .tip{
+        top: 158px; left: 111px;
+        width: 543px; height: 41px;
+        background: url("@{img}t2.png") no-repeat;
+    }
+    .lamp{
+        top: 267px; left: 209px; z-index: 5;
+        width: 326px; height: 488px;
+        background: url("@{img}d1.png") no-repeat;
+    }
+    .light{
+        top: 267px; left: 209px; z-index: 4;
+        width: 326px; height: 345px;
+        background: url("@{img}g1.png") no-repeat;
+    }
+    .light2{
+        top: 201px; left: 149px; z-index: 3;
+        width: 450px; height: 452px;
+        background: url("@{img}g2.png") no-repeat;
+    }
+    .light3{
+        top: 144px; left: 93px; z-index: 2;
+        width: 559px; height: 558px;
+        background: url("@{img}g3.png") no-repeat;
+        -webkit-animation: .8s .2s coolToDark ease-in-out infinite;
+        animation: .8s .2s coolToDark ease-in-out infinite;
+    }
+    .wire{
+        top: 735px; left: 114px;
+        width: 522px; height: 155px;
+        background: url("@{img}z1.png") no-repeat;
+    }
+    .closelamp{
+        top: 888px; left: 300px;
+        width: 144px; height: 87px;
+        background: url("@{img}z2.png") no-repeat;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    .lefthand{
+        top: 906px; left: 223px;
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+        -webkit-animation: .9s .5s handleft ease-out infinite;
+        animation: .9s .5s handleft ease-out infinite;
+    }
+    .righthand{
+        top: 906px; left: 465px;
+        -webkit-animation: .9s .5s handright ease-out infinite;
+        animation: .9s .5s handright ease-out infinite;
+    }
+
+    //two
+    .title2{
+        display: none;
+        top: 50px; left: 71px;
+        width: 612px; height: 203px;
+        background: url("@{img}t3.png") no-repeat;
+        opacity: 0;
+    }
+    .earth{
+        display: none;
+        top: 150px; left: 137px; z-index: 5;
+        width: 476px; height: 476px;
+        background: url("@{img}d2.png") no-repeat;
+        opacity: 0;
+    }
+    .earth-light{
+        display: none;
+        top: 85px; left: 75px; z-index: 4;
+        width: 596px; height: 596px;
+        background: url("@{img}d3.png") no-repeat;
+        opacity: 0;
+    }
+    .tip2{
+        display: none;
+        top: 646px; left: 179px;
+        width: 385px; height: 113px;
+        background: url("@{img}t4.png") no-repeat;
+        opacity: 0;
+    }
+    .share{
+        display: none;
+        top: 825px; left: 262px;
+        width: 232px; height: 70px;
+        background: url("@{img}z5.png") no-repeat;
+        opacity: 0;
+    }
+    .tophand{
+        display: none;
+        top: 918px; left: 358px;
+        background: url("@{img}z3.png") no-repeat;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+
+    .plusleft,.plusright{
+        top: 1035px;
+        width: 100px; height: 100px;
+        background: url("@{img}z10.png") no-repeat;
+        opacity: 0;
+    }
+    .plusleft{
+        left: 205px;
+    }
+    .plusright{
+        left: 410px;
+    }
+}
+
+// 场景切换
+.page-out{
+    .title{
+        -webkit-animation: .2s 1.7s hides ease-in-out forwards;
+        animation: .2s 1.7s hides ease-in-out forwards;
+    }
+    .tip,.way{
+        -webkit-animation: .2s 1.5s hides ease-in-out forwards;
+        animation: .2s 1.5s hides ease-in-out forwards;
+    }
+    .lamp{
+        -webkit-animation: .7s 1.3s hides ease-in-out forwards;
+        animation: .7s 1.3s hides ease-in-out forwards;
+    }
+    .light{
+        -webkit-animation: .5s 1.1s hides ease-in-out forwards;
+        animation: .5s 1.1s hides ease-in-out forwards;
+    }
+    .light2{
+        -webkit-animation: .5s .9s hides ease-in-out forwards;
+        animation: .5s .9s hides ease-in-out forwards;
+    }
+    .light3{
+        -webkit-animation: .5s .7s hides ease-in-out forwards;
+        animation: .5s .7s hides ease-in-out forwards;
+    }
+    .wire{
+        -webkit-animation: .5s .5s hides linear forwards;
+        animation: .5s .5s hides linear forwards;
+    }
+    .closelamp{
+        -webkit-animation: .5s .3s hides linear forwards;
+        animation: .5s .3s hides linear forwards;
+    }
+    .lefthand,.righthand{
+        -webkit-animation: .3s .2s hides linear forwards;
+        animation: .3s .2s hides linear forwards;
+    }
+
+    //two
+    .title2{
+        -webkit-animation: .7s 1.7s shows ease-in-out forwards;
+        animation: .7s 1.7s shows ease-in-out forwards;
+    }
+    .earth{
+        -webkit-animation: 2s .2s earthrun linear forwards;
+        animation: 2s .2s earthrun linear forwards;
+    }
+    .light-shows{
+        -webkit-animation: 1.4s .4s scales ease infinite;
+        animation: 1.4s .4s scales ease infinite;
+        opacity: 1;
+    }
+    .tip2{
+        -webkit-animation: .7s 1.4s shows linear forwards;
+        animation: .7s 1.4s shows linear forwards;
+    }
+    .share{
+        -webkit-animation: .9s 2.5s shows linear forwards;
+        animation: .9s 2.5s shows linear forwards;
+    }
+    .tophand{
+        -webkit-animation: .7s 2.7s tophands ease-in-out infinite;
+        animation: .7s 2.7s tophands ease-in-out infinite;
+    }
+
+    .plusrun{
+        -webkit-animation: .8s .3s pluss ease-in-out forwards;
+        animation: .8s .3s pluss ease-in-out forwards;
+    }
+    .plusrun2{
+        -webkit-animation: .8s .6s pluss ease-in-out forwards;
+        animation: .8s .6s pluss ease-in-out forwards;
+    }
+}
+
+.page-static{
+    .title2,.earth,.tip2,.share{
+        -webkit-animation: none;
+        animation: none;
+        opacity: 1;
+    }
+    .light-shows{
+        -webkit-animation: 1.4s .3s scales ease infinite;
+        animation: 1.4s .3s scales ease infinite;
+        opacity: 1;
+    }
+    .tophand{
+        -webkit-animation: .7s .2s tophands ease-in-out infinite;
+        animation: .7s .2s tophands ease-in-out infinite;
+    }
+}
+
+.wrap-share,.page-rule{
+    position: absolute; top: 0; left: 0; z-index: 300;
+    width: 750px;
+    background: rgba(0,0,0,.75) url("@{img}b1.png") no-repeat;
+    background-size: cover;
+    /*.earth-bg{
+        position: absolute; bottom: 0; left: 0;
+        width: 750px; height: 247px;
+        background: url("@{img}b4.png") no-repeat;
+    }*/
+    .con{
+        position: absolute; top: 114px; left: 95px; z-index: 5;
+        width: 573px; height: 872px;
+        background: url("@{img}b3.png") no-repeat;
+    }
+    .title{
+        position: absolute; top: 21px; left: 131px;
+        width: 295px; height: 78px;
+        background: url("@{img}t5.png") no-repeat;
+    }
+    .info{
+        padding-top: 120px;
+        p{
+            color: #fff;
+            font-family: @yahei;
+            font-size: 30px;
+            line-height: 53px;
+        }
+        span{
+            display: block;
+            padding-left: 70px;
+            &:first-child{
+                padding-left: 40px;
+            }
+        }
+        i{
+            display: inline-block;
+            width: 13px; height: 13px;
+            margin-right: 15px;
+            background: #e5b92e;
+            border-radius: 50%;
+        }
+    }
+    .btn{
+        position: absolute; top: 896px; left: 198px;
+        width: 168px; height: 72px;
+        background: url("@{img}z7.png") no-repeat;
+    }
+     .imgs{
+        position: absolute; top: 0; left: 0; z-index: 350;
+        width: 750px;
+        img{
+            display: block;
+        }
+    }
+}
+.page-rule{
+    z-index: 305;
+}
+
+// 分享
+.wrap-share{
+    .share-info{
+        position: absolute; top: 213px; left: 98px;
+        width: 566px; height: 681px;
+        background: url("@{img}b2.png") no-repeat;
+        .share-txt{
+            position: absolute; top: 190px; left: 35px;
+        }
+        p{
+            color: #fff;
+            font-family: @yahei;
+            font-size: 40px;
+            line-height: 67px;
+        }
+        .arrows{
+            position: absolute; top: 89px; left: 261px;
+            width: 159px; height: 139px;
+            background: url("@{img}z8.png") no-repeat;
+        }
+    }
+}
+
+// 弹窗
+.wrap-alert{
+    position: absolute; top: 0; left: 0; z-index: 20;
+    width: 750px;
+    background: rgba(2,9,43,.89);
+    .alert{
+        position: absolute; top: 215px; left: 100px;
+        width: 567px; height: 682px;
+        background: url("@{img}b2.png") no-repeat;
+    }
+    .infos{
+        width: 490px;
+        margin: 0 auto;
+        padding-top: 40px;
+        p{
+            color: #fff;
+            font-size: 40px;
+            line-height: 66px;
+        }
+        .mb{
+            margin-bottom: 35px;
+        }
+        strong{
+            display: block;
+            width: 346px; height: 56px; line-height: 56px;
+            margin: 5px 0;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            text-align: center;
+        }
+    }
+    .btn{
+        position: absolute; top: 563px; left: 184px;
+        width: 195px; height: 83px;
+        background: url("@{img}z6.png") no-repeat;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+// 媒体查询
+// 华为大屏机
+@media all and (max-width: 750px) and (max-height: 1108px) {
+    .wrap-earth{
+        //background: #000;
+        .way{
+            top: 986px;
+        }
+        .money{
+            top: 1036px;
+        }
+        .plusleft,.plusright{
+            top: 985px;
+        }
+    }
+    .page-rule{
+        .con{
+            top: 90px;
+        }
+        .imgs{
+            top: -20px;
+        }
+    }
+}
+// iPhone 4s
+@media all and(max-width: 750px) and (max-height: 975px) {
+    .load{
+        img{
+            margin-top: -130px;
+        }
+    }
+    .wrap-earth{
+        .title,.tip,.lamp,.light,.light2,.light3,.wire.closelamp,.title2,.earth,.earth-light,.tip2,.plusleft,.plusright{
+            background-position: center;
+            background-size: 80%;
+        }
+        .money{
+            top: 890px;
+        }
+        .way{
+            top: 835px;
+        }
+        .title{
+            top: 15px;
+        }
+        .tip{
+            top: 120px;
+        }
+        .lamp{
+            top: 160px;
+        }
+        .light{
+            top: 187px;
+        }
+        .light2{
+            top: 121px;
+        }
+        .light3{
+            top: 64px;
+        }
+        .wire{
+            top: 570px;
+        }
+        .closelamp{
+            top: 725px;
+        }
+        .lefthand,.righthand{
+            top: 745px;
+        }
+        .title2{
+            top: 20px;
+        }
+        .earth{
+            top: 90px;
+        }
+        .earth-light{
+            top: 25px;
+        }
+        .tip2{
+            top: 545px;
+        }
+        .share{
+            top: 675px;
+        }
+        .tophand{
+            top: 765px;
+        }
+        .plusleft,.plusright{
+            top: 845px;
+        }
+    }
+    .wrap-alert{
+        .alert{
+            top: 135px;
+        }
+    }
+    .page-rule{
+        .con{
+            top: 20px;
+        }
+        .btn{
+            top: 873px;
+        }
+        .imgs{
+            top: -100px;
+        }
+    }
+    .wrap-share{
+        .share-info{
+            top: 140px;
+        }
+    }
+}
+
+// 灯光亮暗变化
+@-webkit-keyframes coolToDark {
+    0%  {opacity: 1;  -webkit-transform: scale(1);}
+    50% {opacity: .7; -webkit-transform: scale(.9);}
+    100%{opacity: 1;  -webkit-transform: scale(1);}
+}
+@keyframes coolToDark {
+    0%  {opacity: 1;  transform: scale(1);}
+    50% {opacity: .7; transform: scale(.9);}
+    100%{opacity: 1;  transform: scale(1);}
+}
+
+// 左手指向
+@-webkit-keyframes handleft {
+    0%  {opacity: .7; -webkit-transform: rotateY(-180deg) translateX(20px);}
+    100%{opacity: 1;  -webkit-transform: rotateY(-180deg) translateX(0);}
+}
+@keyframes handleft {
+    0%  {opacity: .7; transform: rotateY(-180deg) translateX(20px);}
+    100%{opacity: 1;  transform: rotateY(-180deg) translateX(0);}
+}
+
+// 右手指向
+@-webkit-keyframes handright {
+    0%  {opacity: .7; -webkit-transform: translateX(20px);}
+    100%{opacity: 1;  -webkit-transform: translateX(0);}
+}
+@keyframes handright {
+    0%  {opacity: .7; transform: translateX(20px);}
+    100%{opacity: 1;  transform: translateX(0);}
+}
+
+// 淡出
+@-webkit-keyframes hides {
+    0%  {opacity: 1;}
+    100%{opacity: 0;}
+}
+@keyframes hides {
+    0%  {opacity: 1;}
+    100%{opacity: 0;}
+}
+
+// 淡入
+@-webkit-keyframes shows {
+    0%  {opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes shows {
+    0%  {opacity: 0;}
+    100%{opacity: 1;}
+}
+
+// 缩放
+@-webkit-keyframes scales {
+    0%  {opacity: .6; -webkit-transform: scale(.9);}
+    100%{opacity: .9;  -webkit-transform: scale(1);}
+}
+@keyframes scales {
+    0%  {opacity: .6; transform: scale(.9);}
+    100%{opacity: .9;  transform: scale(1);}
+}
+
+// 地球
+@-webkit-keyframes earthrun {
+    0%  {opacity: 0; -webkit-transform: scale(.2);}
+    100%{opacity: 1; -webkit-transform: scale(1);}
+}
+@keyframes earthrun {
+    0%  {opacity: 0; transform: scale(.2);}
+    100%{opacity: 1; transform: scale(1);}
+}
+
+// 指上
+@-webkit-keyframes tophands {
+    0%  {opacity: 0; -webkit-transform: rotate(90deg) translateX(0);}
+    100%{opacity: 1; -webkit-transform: rotate(90deg) translateX(-10px);}
+}
+@keyframes tophands {
+    0%  {opacity: 0; transform: rotate(90deg) translateX(0);}
+    100%{opacity: 1; transform: rotate(90deg) translateX(-10px);}
+}
+
+// 数量增加
+@-webkit-keyframes pluss {
+    0%  {opacity: 0; -webkit-transform: scale(.5) translateY(5%);}
+    50%{opacity: 1; -webkit-transform: scale(.8) translateY(-10%);}
+    100%{opacity: 0; -webkit-transform: scale(1) translateY(-25%);}
+}
+@keyframes pluss {
+    0%  {opacity: 0; transform: scale(.5) translateY(5%);}
+    50%{opacity: 1; transform: scale(.8) translateY(-10%);}
+    100%{opacity: 0; transform: scale(1) translateY(-25%);}
+}

@@ -1,0 +1,282 @@
+@charset "UTF-8";
+// CSS Document
+//******************************
+//** 文件描述 :  法国欧洲杯决战
+//** 时    间 ： 2016.07.09
+//** 作    者 ： wangweimin
+//** E-mail： wangweimin@zjcap.cn
+//*******************************
+@w: 1000px;
+@width: 100%;
+
+//字体
+@yahei: Arial,'Microsoft YaHei';
+@arial: Arial;
+@song: \u5b8b\u4f53,Arial;
+
+//CSS Reset
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd,input,textarea,hr{margin: 0; padding: 0;}
+table{border-collapse: collapse; border-spacing: 0; width: 100%;}
+img{border: none;}
+ul,ol,li{list-style-type: none;}
+a{text-decoration: none; cursor: pointer; color: #333;}
+a:hover{text-decoration: underline;}
+input,button,select,textarea{outline: none; background: #fff; border: 1px solid #ccc;}
+a,input{outline: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-tap-highlight-color: transparent;}
+h1,h2,h3,h4,h5,h6{font-size: 100%; font-weight: normal;}
+strong,b{font-weight: normal;}
+em,i{font-style: normal;}
+a,button,input{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+.clearfix:before,.clearfix:after {content: "."; display: block;  height: 0; visibility: hidden;}
+.clearfix:after{clear: both;}
+.clearfix{zoom: 1;}
+.clear{clear:both;}
+.hide{display: none;}
+.hidetxt{font-size: 0; line-height: 0; _overflow: hidden;}
+a[title="站长统计"]{
+    display: none;
+}
+
+//单独css
+body{
+    width: 100%;
+    background: #060a1a;
+    font-family: @yahei;
+}
+
+.shareimg{
+    position: absolute;
+    width: 0; height: 0; line-height: 0; font-size: 0; border: 0; margin: 0; padding: 0;
+}
+
+#wrap{
+    position: relative;
+    width: 750px;
+    max-width: 750px;
+    height: 1254px;
+    margin: 0 auto;
+}
+
+.wrap-con{
+    font-family: '冬青黑体简体',@yahei;
+    .head{
+        width: 750px; height: 784px;
+        background: url(../images/bg_head.jpg) no-repeat;
+        .hidetxt;
+        .logo{
+            position: absolute; top: 18px; left: 25px;
+            width: 153px; height: 60px;
+            background: url(../images/logo.png) no-repeat;
+        }
+    }
+    .register{
+        position: relative;
+        width: 750px; height: 632px;
+        background: url(../images/bg_reg.jpg?v=2016) no-repeat;
+        .input{
+            position: absolute; left: 255px;
+            width: 415px; height: 75px;
+            padding-left: 15px;
+            border: none;
+            background: none;
+            color: #fff;
+            font-family: '冬青黑体简体',@yahei;
+            font-size: 28px;
+        }
+        .input-mobile{
+            top: 105px;
+        }
+        .input-code{
+            top: 208px;
+            width: 225px;
+        }
+        .input-referrer{
+            top: 309px;
+        }
+        .input-pwd{
+            left: 58px; top: 408px;
+            width: 610px;
+        }
+        input::-webkit-input-placeholder{
+            color: #1842b1;
+        }
+        .btn-code{
+            position: absolute; top: 218px; left: 520px;
+            width: 166px; height: 58px; line-height: 58px;
+            border: 1px solid #a90c14;
+            background: #fff;
+            color: #a90c14;
+            font-size: 28px;
+            text-align: center;
+            &:hover{
+                text-decoration: none;
+            }
+            &.disabled,&[disabled]{
+                background: #a69c9c;
+                border: 1px solid #525050;
+            }
+        }
+        .btn-reg{
+            position: absolute; top: 448px; left: 206px;
+            width: 338px; height: 72px; line-height: 72px;
+            color: #fff;
+            font-size: 32px;
+            text-align: center;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        .yet{
+            position: absolute; top: 535px; left: 0; right: 0;
+            color: #030409;
+            font-size: 30px;
+            text-align: center;
+            .link{
+                margin-left: 30px;
+                color: #1549df;
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .product,.product2{
+        a{
+            position: absolute;
+            width: 375px; height: 680px;
+            .hidetxt;
+            &:hover{
+                text-decoration: none;
+            }
+            &:first-child{
+                left: 0;
+            }
+            &:last-child{
+                right: 0;
+            }
+        }
+    }
+    .product{
+        position: relative;
+        width: 750px; height: 724px;
+        margin-top: 45px;
+        background: url(../images/bg_product.jpg) no-repeat;
+    }
+    .product2{
+        width: 750px; height: 761px;
+        background: url(../images/bg_product2.jpg) no-repeat;
+    }
+    .rule{
+        width: 750px; height: 942px;
+        margin-bottom: 50px;
+        background: url(../images/bg_rule.jpg) no-repeat;
+        h3{
+            margin-bottom: 430px;
+            .hidetxt;
+        }
+        p{
+            width: 630px;
+            margin: 0 auto 25px;
+            color: #fff;
+            font-size: 26px;
+            line-height: 42px;
+            i{
+                float: left;
+                display: inline-block;
+                width: 34px; height: 34px; line-height: 34px;
+                margin-top: 5px;
+                margin-right: 18px;
+                background: #fff;
+                border-radius: 50%;
+                color: #131941;
+                text-align: center;
+            }
+            span{
+                float: left;
+                width: 572px;
+                text-align: justify;
+            }
+            strong{
+                display: block;
+                margin-top: 20px;
+                color: #f6cf0a;
+                font-size: 23px;
+                line-height: 36px;
+            }
+        }
+    }
+}
+
+.mask{
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 5;
+    background: rgba(40,40,40,.55);
+    font-family: '冬青黑体简体',@yahei;
+    .mask-verification{
+        position: relative;
+        width: 630px; height: 420px;
+        margin: 50% auto;
+        background: #193793;
+        p{
+            padding-top: 60px;
+            color: #fff;
+            font-size: 36px;
+            text-align: center;
+        }
+        .input-verification{
+            position: absolute; top: 140px; left: 43px;
+            width: 300px; height: 82px;
+            padding-left: 20px;
+            background: #fff;
+            font-family: '冬青黑体简体',@yahei;
+            font-size: 28px;
+            &::-webkit-input-placeholder{
+                color: rgba(49,49,49,.5);
+                font-size: 28px;
+            }
+        }
+        .codeImg{
+            position: absolute; top: 143px; left: 380px;
+            width: 190px; height: 80px;
+        }
+        span{
+            position: absolute; top: 233px; left: 410px;
+            color: #131a43;
+            font-size: 24px;
+        }
+        .btn-cancel,.btn-confirm{
+            position: absolute; top: 310px;
+            width: 274px; height: 70px; line-height: 70px;
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        .btn-cancel{
+            left: 27px;
+            background: url(../images/btn1.jpg) no-repeat;
+        }
+        .btn-confirm{
+            left: 326px;
+            background: url(../images/btn2.jpg) no-repeat;
+        }
+    }
+}
+
+// iPhone 5
+@media screen and (max-height: 1200px) {
+
+}
+
+// iPhone 4
+@media screen and (max-height: 975px) {
+    .mask{
+        .mask-verification{
+            margin: 40% auto;
+        }
+    }
+}

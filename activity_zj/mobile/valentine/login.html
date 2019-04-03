@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>情人节活动 - 中均资本</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" href="css/index.css?_v=${last.updated}">
+</head>
+<body>
+    <section class="submit-wrap">
+        <div class="bg"></div>
+        <img class="logo" src="images/28.png" alt="中均资本">
+        <form class="submit-form">
+            <input type="text" class="input js-name" placeholder="请输入您的姓名">
+            <input type="text" class="input js-phone" placeholder="请输入您的手机号">
+            <input type="text" class="input js-wechat" placeholder="请输入您的微信昵称">
+            <div class="award"></div>
+            <a class="btn-save js-save">提交</a>
+            <p class="tip">活动结束由后台随机抽奖</p>
+        </form>
+        <span class="embellish"></span>
+    </section>
+
+    <div class="alert-wrap hide">
+        <div class="con-wrap">
+            <p class="title"></p>
+            <p class="con"></p>
+            <a class="btn">我知道了</a>
+        </div>
+    </div>
+
+    <script src="../../jquery.2.1.4.min.js"></script>
+    <script>
+        $(function() {
+            $('.alert-wrap').css('height', $(window).height() + 'px');
+
+            var $wrap = $('.submit-wrap'),
+                $alert = $('.alert-wrap');
+
+            var showAlert = function(title, msg) {
+                $alert.find('.title').html(title);
+                $alert.find('.con').html(msg);
+                $alert.show();
+            }
+
+            $wrap.on('click touchstart', '.js-save', function() {
+                var name = $.trim($wrap.find('.js-name').val()),
+                    phone = $.trim($wrap.find('.js-phone').val()),
+                    wechat = $.trim($wrap.find('.js-wechat').val());
+
+                if (!name) {
+                    return showAlert('系统消息', '姓名必填！');
+                }
+
+                if (!/^(1[34578][0-9])\d{8}$/.test(phone)) {
+                    return showAlert('系统消息', '手机号错误！');
+                }
+
+                $.ajax({
+                    url: '/web/noauth',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        method: '/wechat/clientinfo/add',
+                        personName: name,
+                        mobilePhone: phone,
+                        userNick: wechat,
+                        fromType: 2
+                    },
+                    success: function(response) {
+                        if (response.retCode != '0000') {
+                            showAlert('系统消息', response.retMsg);
+                            return;
+                        }
+
+                        showAlert('谢谢您的参与', '活动中奖用户，将在活动结束后统一安排话费充值，充值手机为您预留的手机号码！');
+                    },
+                    fail: function(response) {
+                        if (response.retCode != '0000') {
+                            showAlert('系统消息', response.retMsg);
+                            return;
+                        }
+                    }
+                });
+            });
+
+            $alert.on('click touchstart', '.btn', function() {
+                $alert.hide();
+            });
+        });
+    </script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body>
+</html>

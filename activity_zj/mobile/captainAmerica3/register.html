@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>送美队3周边</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="Keywords" content="中均,中均资本,中均资产,美国队长,钢铁侠,绿巨人,黑寡妇,雷神,冬兵,幻视,战争机器,蜘蛛侠,复仇者联盟,漫威,复联2.5,小罗伯特·唐尼">
+    <meta name="Description" content="中均资产管理有限公司是由大型国企龙翔投资控股集团 有限公司与长春城市开发（集团）有限公司联合发起 成立，致力于为高净值客户提供财富长期稳健的保值、 增值服务的资产管理公司。">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" href="css/ca3reg.css" class="linkcss">
+</head>
+<body>
+    <div id="wrap">
+        <img src="images/share.png" alt="中均资本" class="shareimg">
+
+        <div class="register-main">
+            <div class="bgs"></div>
+            <div class="light"></div>
+            <div class="speed-register"></div>
+            <div class="form">
+                <input type="text" class="phone" placeholder="请输入手机号" maxlength="11">
+                <p class="phone-tip js-tip hide">该手机号已被注册</p>
+                <input type="text" class="code" placeholder="请输入验证码" maxlength="6">
+                <p class="code-tip js-tip hide">请输入图形验证码</p>
+                <input type="text" class="phonecode" placeholder="请输入验证码" maxlength="6">
+                <p class="phonecode-tip js-tip hide">请输入6位手机验证码</p>
+                <img class="codeImg" src="/validcode/generate-validcode.do?" alt="图形验证码">
+                <span class="codeTxt">看不清楚 换一张</span>
+                <a class="btn-code">获取验证码</a>
+                <a class="btn-register">注册</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../jquery.2.1.4.min.js"></script>
+    <script src="js/ca3reg.js" class="linkscript"></script>
+    <script src="https://www.zjcap.cn/tongji/trace/up_beacon.js"></script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body>
+</html>

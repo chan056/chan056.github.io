@@ -1,0 +1,13 @@
+.processbar{ position:relative; padding:0 60px 48px;/*padding-left/padding-right决定字标距两侧边距*/ font-size:14px; }
+.processbar .process_steps{ position:relative; z-index:2; list-style:none; margin:0; }
+.processbar .process_steps .step_item{ position:absolute; width:26px;/*宽度26用于计算*/ height:26px; line-height:26px; color:#666; text-align:center; background:url(step_bg.png) 1px -64px no-repeat; }
+.processbar .process_steps .number{ font-family:Arial, Helvetica, sans-serif; }
+.processbar .process_steps li.active{ background-position:0 0; }
+.processbar li.active .number{ color:#FFF; font-size:16px; }
+.processbar .process_steps li.after{ background-position:2px -33px; }
+.processbar li.after .number{ color:#FFF; }
+.processbar .step_item .title{ position:absolute; left:50%;/*left:50%必须设置*/ bottom:-24px; white-space:nowrap; color:#333; }
+.processbar li.active .title,.processbar li.after .title{ color:#B7082A; }
+.processbar .progress,.processbar .progress_highlight{ border-radius:3px; }
+.processbar .progress{ position:absolute; z-index:0; width:100%; /*box-sizing:border-box;兼容ie7改为js计算,pading+border-width=4用于计算*/ padding:1px; border:1px solid #D4D4D4; background-color:#EDEDEE; left:0; top:10px; border-radius:3px; }
+.processbar .progress .progress_highlight{ height:3px; background-color:#D53F5B; border-radius:2px; overflow:hidden; }

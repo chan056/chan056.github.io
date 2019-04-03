@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>#你熄一盏灯，我捐1元钱#</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <style>
+        body{background: #030826;}
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="wrap">
+        <img src="images/z9.png" alt="中均资本" class="shareimg">
+        <section class="h load">
+            <img src="images/loaging.gif" alt="加载">
+        </section>
+
+        <div class="h wrap-earth hide">
+            <p class="way rule-btn hide">参与方式</p>
+            <div class="money">已筹<b class="js-nums">-</b>元<em>|</em>共有<b class="js-nums">-</b>人关灯</div>
+
+            <section class="h page">
+                <p class="title"></p>
+                <p class="tip"></p>
+
+                <div class="lamp"></div>
+                <div class="light"></div>
+                <div class="light2"></div>
+                <div class="light3"></div>
+
+                <div class="wire"></div>
+                <a class="closelamp btn-closelamp"></a>
+                <i class="lefthand"></i>
+                <i class="righthand"></i>
+
+                <!-- two -->
+                <p class="title2"></p>
+                <div class="earth"></div>
+                <div class="earth-light"></div>
+                <p class="tip2"></p>
+                <p class="share share-btn"></p>
+                <i class="tophand"></i>
+
+                <i class="plusleft"></i>
+                <i class="plusright"></i>
+            </section>
+
+            <section class="h wrap-alert hide">
+                <div class="alert">
+                    <div class="infos">
+                        <p class="mb">您已成功关闭一盏灯，中均<br/>将帮您捐出1元钱。</p>
+                        <p>关注微信号<strong>zhongjunziben</strong></p>
+                        <p>回复数字“1”</p>
+                        <p>领取环保纪念品“多肉植物”<br/>一盆。</p>
+                    </div>
+                    <a class="btn btn-thx"></a>
+                </div>
+            </section>
+
+            <section class="h wrap-share hide">
+                <div class="share-info">
+                    <div class="share-txt">
+                        <p>点击右上角</p>
+                        <p>通过“发送给朋友”</p>
+                        <p>邀请好友一起助力环保公益</p>
+                        <p>~~~</p>
+                    </div>
+                    <span class="arrows"></span>
+                </div>
+                <div class="earth-bg"></div>
+            </section>
+        </div>
+    </div>
+
+    <section class="h page-rule hide">
+        <div class="earth-bg"></div>
+
+        <div class="con">
+            <h2 class="title"></h2>
+            <div class="info">
+                <p><span><i></i>3.19-4.12期间， 点击“关灯”按钮，</span><span>中均资本将替您为本次公益环保</span><span>活动捐献1元钱。</span></p>
+                <p><span><i></i>活动最后达成的所有公益款都将捐</span><span>助给 “爱晚基金”，由“爱晚基金” 用</span><span>于开展节能环保的公益活动。</span></p>
+                <p><span><i></i>成功关灯的用户，关注微信号：</span><span>zhongjunziben， 回复数字“1”</span><span>还能赢取环保纪念品“多肉植物”</span><span>一盆。</span></p>
+                <a class="btn btn-thx"></a>
+            </div>
+        </div>
+        <div class="imgs">
+            <img class="linkscript" src="images/b5.png" alt="二维码">
+        </div>
+    </section>
+
+    <script src="../../jquery.2.1.4.min.js"></script>
+    <script src="js/earth.js?v=20160318"></script>
+    <script src="https://www.zjcap.cn/tongji/trace/up_beacon.js?_v=20160314"></script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1253660591&web_id=1253660591"></script>
+</body>
+</html>
